@@ -17,7 +17,7 @@ var containerObj;
 		$(window).load(function() {
                     resizeImage();
 		});
-		$(containerObj.parent()).on('change',function() {console.log(2);
+		$(containerObj.parent()).on('change',function() {
                     resizeImage();
 		});
 		$(window).bind("resize",function() {

@@ -1,4 +1,30 @@
+(function () {
+    var $frame = $('#centered');
+    var $wrap  = $frame.parent();
+
+    // Call Sly on frame
+    $frame.sly({
+            horizontal: 1,
+            itemNav: 'basic',
+            smart: 1,
+            activateOn: 'click',
+            mouseDragging: 1,
+            touchDragging: 1,
+            releaseSwing: 1,
+            startAt: 0,
+            scrollBar: $wrap.find('.scrollbar'),
+            scrollBy: 1,
+            speed: 300,
+            elasticBounds: 1,
+            easing: 'easeOutExpo',
+            dragHandle: 1,
+            dynamicHandle: 1,
+            clickBar: 1,
+            
+    });
+}());
 $(document).ready(function() {
+    var time=1000;
     resizeContainer();
     $(window).on('resize',function(){
         resizeContainer();
@@ -17,68 +43,55 @@ $(document).ready(function() {
         });
     });
     $('.bgContainer').on('click',function(){
+        
+        var item=$(this).index();
+        var $frame = $('#centered');
+        $frame.sly('toStart', item);  
          $(this).find(".body-background").ezBgResize({
             img     : BGImageArray[0]
         });
+        var matrix;
+        matrix=$('.bgList').css('transform');matrix=$('.bgList').css('transform');
+        if(!matrix) matrix=$('.bgList').css('-webkit-transform');
+        if(!matrix) matrix=$('.bgList').css('-o-transform');
+        if(!matrix) matrix=$('.bgList').css('-moz-transform');
+        if(!matrix) matrix=$('.bgList').css('-ms-transform');
         
+        var transform = matrix.match(/[0-9\.]+/g);
+        var left=transform[4];
         $(this).css({
            position:'relative',
            margin:0,
-           left:0,
            'z-index':1
         });
         
+                
+                
         $(this).animate(
         {
-            width:$('#container').width()-1
+            width:$('#container').width()-1,
+            //left:left
         },
         {
-            duration:1000,
+            duration:time,
             step: function(now, fx) {    
-                $(this).change();    
+                $(this).change();  
+                
             },
             complete: function (){
                 $(this).change(); 
                 $('#descMenu').addClass('navBoxShow',500);
             }
         });
+        
         $('.bgContainer').not(this).animate(
         {
-            width:0,
-            margin:0
-        },1000);
+            //width:500
+        },time);
     });
   
 });
-/*
-(function () {
-    var $frame = $('#centered');
-    var $wrap  = $frame.parent();
 
-    // Call Sly on frame
-    $frame.sly({
-            horizontal: 1,
-            itemNav: 'basic',
-            smart: 1,
-            activateOn: 'click',
-            mouseDragging: 1,
-            touchDragging: 1,
-            releaseSwing: 1,
-            startAt: 4,
-            scrollBar: $wrap.find('.scrollbar'),
-            scrollBy: 1,
-            speed: 300,
-            elasticBounds: 1,
-            easing: 'easeOutExpo',
-            dragHandle: 1,
-            dynamicHandle: 1,
-            clickBar: 1,
-
-            // Buttons
-            prev: $wrap.find('.prev'),
-            next: $wrap.find('.next')
-    });
-}());*/
 function resizeContainer(){
     $('#container').css('height',$(window).height()-90).change();
 }

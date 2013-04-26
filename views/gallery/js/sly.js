@@ -766,7 +766,6 @@
 
 			var relatives = {};
 			var centerOffset = forceCenteredNav ? 0 : frameSize / 2;
-
 			// Determine active page
 			if (!parallax) {
 				for (var p = 0, pl = pages.length; p < pl; p++) {

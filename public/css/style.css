@@ -426,12 +426,18 @@ input[type="submit"]{
     float:left;
     display: inherit !important;
 }
+.bgListReset{
+    transform:translateZ(0px) translateX(0px) !important;
+    -webkit-transform:translateZ(0px) translateX(0px) !important;
+    -o-transform:translateZ(0px) translateX(0px) !important;
+    -ms-transform:translateZ(0px) translateX(0px) !important;
+}
 .bgContainer{
     float: left;
     height: 100%;
     overflow: hidden;
     position: relative;
-    width: 25%;
+    width: 500px;
     z-index: 0;
 }
 .bgDesc{
