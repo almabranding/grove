@@ -2,8 +2,7 @@
 
 /* Frame */
 .frame {
-	height: 90%;
-	line-height: 250px;
+	height: 100%;
 	overflow: hidden;
 }
 .frame ul {
@@ -19,14 +18,10 @@
 	height: 100%;
 	margin: 0 1px 0 0;
 	padding: 0;
-	background: #333;
-	color: #ddd;
 	text-align: center;
 	cursor: pointer;
 }
 .frame ul li.active {
-	color: #fff;
-	background: #a03232;
 }
 
 /* Scrollbar */

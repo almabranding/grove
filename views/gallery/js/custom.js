@@ -1,30 +1,53 @@
+var sly;
+var time=1500;
+var item=0;
 (function () {
     var $frame = $('#centered');
     var $wrap  = $frame.parent();
 
     // Call Sly on frame
-    $frame.sly({
+    
+    var $options={
             horizontal: 1,
             itemNav: 'basic',
             smart: 1,
-            activateOn: 'click',
             mouseDragging: 1,
             touchDragging: 1,
             releaseSwing: 1,
             startAt: 0,
             scrollBar: $wrap.find('.scrollbar'),
             scrollBy: 1,
-            speed: 300,
+            speed: time,
             elasticBounds: 1,
-            easing: 'easeOutExpo',
+            easing: 'linear',
             dragHandle: 1,
             dynamicHandle: 1,
             clickBar: 1,
             
-    });
+    };
+    sly = new Sly($frame, $options).init();
 }());
-$(document).ready(function() {
-    var time=1000;
+$(window).load(function() {
+    
+    var max=$('.bgContainer').size();
+    $('#descPrev').on('click',function(){
+        if(item>0)item--;
+        var li=$('.bgContainer').eq(item);
+        selectImage(li);  
+    });
+    $('#descNext').on('click',function(){  
+        if(item<max)item++;
+        var li=$('.bgContainer').eq(item);
+        $('.selected').removeClass('selected').animate(
+        {
+            width:400
+        },
+        {
+            complete: function (){
+                selectImage(li);
+            }
+        });   
+    });
     resizeContainer();
     $(window).on('resize',function(){
         resizeContainer();
@@ -42,52 +65,9 @@ $(document).ready(function() {
             $(this).removeClass('bgDescShow', 500);
         });
     });
-    $('.bgContainer').on('click',function(){
-        
-        var item=$(this).index();
-        var $frame = $('#centered');
-        $frame.sly('toStart', item);  
-         $(this).find(".body-background").ezBgResize({
-            img     : BGImageArray[0]
-        });
-        var matrix;
-        matrix=$('.bgList').css('transform');matrix=$('.bgList').css('transform');
-        if(!matrix) matrix=$('.bgList').css('-webkit-transform');
-        if(!matrix) matrix=$('.bgList').css('-o-transform');
-        if(!matrix) matrix=$('.bgList').css('-moz-transform');
-        if(!matrix) matrix=$('.bgList').css('-ms-transform');
-        
-        var transform = matrix.match(/[0-9\.]+/g);
-        var left=transform[4];
-        $(this).css({
-           position:'relative',
-           margin:0,
-           'z-index':1
-        });
-        
-                
-                
-        $(this).animate(
-        {
-            width:$('#container').width()-1,
-            //left:left
-        },
-        {
-            duration:time,
-            step: function(now, fx) {    
-                $(this).change();  
-                
-            },
-            complete: function (){
-                $(this).change(); 
-                $('#descMenu').addClass('navBoxShow',500);
-            }
-        });
-        
-        $('.bgContainer').not(this).animate(
-        {
-            //width:500
-        },time);
+    $('.bgContainer').on('click',function(){   
+        selectImage($(this));
+   
     });
   
 });
@@ -95,4 +75,51 @@ $(document).ready(function() {
 function resizeContainer(){
     $('#container').css('height',$(window).height()-90).change();
 }
-    
+
+function selectImage(li){
+        item=li.index();
+        sly.toStart(item,false);
+        li.find(".body-background").ezBgResize({
+            //img     : BGImageArray[0]
+        });
+        li.css({
+           position:'relative',
+           margin:0,
+           'z-index':1
+        });
+        $('.selected').removeClass('selected').animate(
+        {
+            width:400
+        },
+        {
+            duration:time,
+            step: function(now, fx) {    
+                $(this).change(); 
+                
+            },
+            complete: function (){
+                $(this).change();
+                 sly.reload();
+            }
+        });   
+        li.addClass('selected');
+        sly.toStart(item,false);
+        li.animate(
+        {
+            width:$('#container').width()-20,
+        },
+        {
+            duration:time,
+            step: function(now, fx) {    
+                $(this).change();
+                
+            },
+            complete: function (){
+                $(this).change(); 
+                sly.reload();
+                $('#descMenu').addClass('navBoxShow',500);
+                
+               
+            }
+        });
+}

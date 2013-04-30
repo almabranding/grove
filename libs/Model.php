@@ -55,9 +55,9 @@ class Model {
     public function getMenu($url=''){
             $m.='<ul class="header_menu">';
                 $m.='<li class="menuTitle"><ul>';
-                $m.='<li class="menuOpt">Architecture</li>';
-                $m.='<li class="menuOpt">Amenities</li>';
-                $m.='<li class="menuOpt">Residences</li>';
+                $m.='<li class="link">Architecture</li>';
+                $m.='<li class="link">Amenities</li>';
+                $m.='<li class="link">Residences</li>';
                 $m.='<li class="menuOpt">Floorplans</li>';
                 $m.='<li class="menuOpt">Team</li>';
                 $m.='<li class="menuOpt">Inspiration</li>';
