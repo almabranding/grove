@@ -349,6 +349,12 @@ input[type="submit"]{
 .preloadW{
    background: url("../images/preloadW.gif") no-repeat scroll 0 0px transparent !important;
 }
+.bgContainer.selected{
+    left: 0;
+    margin: 0;
+    position: absolute;
+    z-index: 1;
+}
 .labelInfo{
     background: url("../images/labelInfo.png") no-repeat scroll 0 0px transparent;
     left: 0px;
@@ -519,7 +525,6 @@ input[type="submit"]{
     position: relative;
     text-align: left;
     width: 65%;
-    left:300px;
 }
 .colsView{
      -moz-column-count: 2;

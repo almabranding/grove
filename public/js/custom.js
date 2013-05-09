@@ -1,24 +1,24 @@
 
 var std = ({
-    fontFamily: 'Akkurat',
+    fontFamily: 'Din',
     color: '#7f7e82',
     letterSpacing: '0.3em',
     fontSize: '11px',
 });
 var h2 = ({
-    fontFamily: 'Akkurat',
+    fontFamily: 'Din',
     color: '#333333',
     letterSpacing: '0.3em',
     fontSize: '21px',
 });
 var h3 = ({
-    fontFamily: 'Akkurat',
+    fontFamily: 'Din',
     color: '#333333',
     letterSpacing: '0.3em',
     fontSize: '13px',
 });
 var link = ({
-    fontFamily: 'Akkurat',
+    fontFamily: 'Din',
     color: '#807f83',
     letterSpacing: '0.3em',
     fontSize: '11px',
@@ -28,7 +28,7 @@ var link = ({
     }
 });
 var menuLink = ({
-    fontFamily: 'Akkurat',
+    fontFamily: 'Din',
     color: '#7f7e82',
     letterSpacing: '0.3em',
     fontSize: '11px',
@@ -38,17 +38,12 @@ var menuLink = ({
     }
 });
 var menu = ({
-    fontFamily: 'Akkurat',
+    fontFamily: 'Din',
     color: '#2d2427',
     letterSpacing: '0.3em',
     fontSize: '13px',
 });
-var frameContent = ({
-    fontFamily: 'Akkurat_bold',
-    color: '#2d2427',
-    letterSpacing: '0.8em',
-    fontSize: '13px',
-});
+
 $(window).load(function() {
     $('#selectMenu').on('mouseenter', function() {
         $('#menuprimary').queue(function() {
@@ -70,7 +65,5 @@ function loadCufon() {
     Cufon.replace('h3', h3);
     Cufon.replace('.menuOpt', menuLink);
     Cufon.replace('.menuTitlespan', menu);
-    Cufon.replace('.frameContent', frameContent);
     Cufon.replace('.link', link);
-    Cufon.replace('.bold', frameContent);
 }

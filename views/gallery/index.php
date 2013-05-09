@@ -1,10 +1,10 @@
 <script>
     var BGImageArray=new Array('<?php echo URL . 'public/images/home.jpg'; ?>');
 </script>
-
+<div class="preload preloadW"></div>
 <div class="scrollbar">
-<div class="handle">
-<div class="mousearea"></div>
+    <div class="handle">
+    <div class="mousearea"></div>
 </div>
 </div>
 <div id="centered" class="frame" style="overflow: hidden;">
@@ -41,10 +41,5 @@
 </li>
 <?php }?>
 </ul>
-</div>
-<div id="descNav">
-<div id="descDown"></div>
-<div id="descPrev"></div>
-<div id="descNext"></div>
 </div>
 
