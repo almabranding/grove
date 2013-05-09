@@ -5,6 +5,18 @@ var std = ({
     letterSpacing: '0.3em',
     fontSize: '11px',
 });
+var h2 = ({
+    fontFamily: 'Akkurat',
+    color: '#333333',
+    letterSpacing: '0.3em',
+    fontSize: '21px',
+});
+var h3 = ({
+    fontFamily: 'Akkurat',
+    color: '#333333',
+    letterSpacing: '0.3em',
+    fontSize: '13px',
+});
 var link = ({
     fontFamily: 'Akkurat',
     color: '#807f83',
@@ -39,12 +51,12 @@ var frameContent = ({
 });
 $(window).load(function() {
     $('#selectMenu').on('mouseenter', function() {
-        $('#selectMenu #menu').queue(function() {
+        $('#menuprimary').queue(function() {
             $(this).clearQueue();
             $(this).addClass('navBoxShow', 500);
         });
     }).on('mouseleave', function() {
-        $('#selectMenu #menu').queue(function() {
+        $('#menuprimary').queue(function() {
             $(this).clearQueue();
             $(this).removeClass('navBoxShow', 500);
         });
@@ -54,6 +66,8 @@ $(window).load(function() {
 });
 function loadCufon() {
     Cufon.replace('p,span,label', std);
+    Cufon.replace('h2', h2);
+    Cufon.replace('h3', h3);
     Cufon.replace('.menuOpt', menuLink);
     Cufon.replace('.menuTitlespan', menu);
     Cufon.replace('.frameContent', frameContent);

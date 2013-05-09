@@ -115,7 +115,7 @@ footer nav li{
     cursor: pointer;
 }
 .mapSubBar{
-    background: none repeat scroll 0 0 #CACACA;
+    background: none repeat scroll 0 0 #000;
     height: 27px;
     padding: 17px 12px 0;
 }
@@ -125,6 +125,11 @@ footer nav li{
 }
 .barLeft{
     float: left;
+}
+.barLeft li{
+    margin: 0 0 0 13px;
+    text-align: left;
+    width: 103px;
 }
 .preload{
    background: url("../images/preload.gif") no-repeat scroll 0 0px transparent;
@@ -208,6 +213,19 @@ label {
     padding: 10px 5px;
     text-align: center;
     width: 100px;
+}
+#page{
+    width: 70%;
+    margin: auto;
+    padding: 20px;
+}
+#pageDesc{
+    margin: auto auto 15px;
+    text-align: left;
+    width: 66%;
+}
+#pageDesc div{
+    margin: 30px 0;
 }
 #imgFull{
     background: #ffffff;
@@ -364,18 +382,20 @@ input[type="submit"]{
 }
 #menuprimary{
     background: none repeat scroll 0 0 #FFFFFF;
-    position: absolute;
-    width: 100%;
-    z-index: 10;
-    padding: 0 11px;
+    bottom: 0;
+    margin-bottom: 44px;
+    overflow: hidden;
+    position: relative;
+    width: 262px;
+    z-index: 23;
 }
 .menuTitle ul{
     float:left;
     width: 33%;
 }
 #menu li{
-    text-transform: uppercase;
-    /*display: none;*/
+    /*text-transform: uppercase;
+    display: none;*/
 }
 .header_menu {
     color: #000000;
@@ -388,7 +408,7 @@ input[type="submit"]{
     cursor: pointer;
     display: inline;
     float: left;
-    margin: 0 15px 20px;
+    margin: 8px 0 21px 24px;
     position: relative;
     text-align: left;
     width: 100px;
@@ -414,6 +434,7 @@ input[type="submit"]{
 .header_menu ul li {
     /*height: 0;
     opacity: 0;*/
+    margin: 5px 0;
     overflow: hidden;    
     padding: 0;
 }
@@ -440,6 +461,16 @@ input[type="submit"]{
     -o-transform:translateZ(0px) translateX(0px) !important;
     -ms-transform:translateZ(0px) translateX(0px) !important;
 }
+.container-margin{
+    background: none repeat scroll 0 0 #EBEBEB;
+    height: 100%;
+    margin: 0 20px;
+    position: relative;
+    z-index: -4;
+}
+.container-margin #body-background{
+    position: relative !important;
+}
 .bgContainer{
     float: left;
     height: 100%;
@@ -449,14 +480,15 @@ input[type="submit"]{
     z-index: 0;
 }
 .bgDesc{
-    height: 0px;
-    width: 100%;
-    position: absolute;
-    bottom:0;  
-    background: #fff;
-    opacity: 0;
-    padding: 0;
+    background: none repeat scroll 0 0 #FFFFFF;
+    bottom: 0;
     font-size: 20px;
+    height: 0;
+    opacity: 0;
+    padding: 10px 24px;
+    position: absolute;
+    text-align: left;
+    width: 100%;
 }
 .bgDescShow{
    height: 50px; 
@@ -465,8 +497,9 @@ input[type="submit"]{
 #descMenu{
     height: 0;
     opacity: 0;
-    padding: 0 13px;
+    overflow: hidden;
     position: absolute;
+    width: 100%;
     z-index: 20;
 }
 #descMenu #menu{
@@ -481,8 +514,12 @@ input[type="submit"]{
 }
 #descInfo{
     float: left;
+    margin-top: 11px;
+    max-width: 800px;
+    position: relative;
     text-align: left;
-    width: 80%;
+    width: 65%;
+    left:300px;
 }
 .colsView{
      -moz-column-count: 2;
@@ -493,20 +530,29 @@ input[type="submit"]{
     column-gap: 20px;
 }
 #descNav{
-    float:left;
-    width: 50px;
+    bottom: 26px;
+    float: right;
+    margin: 11px;
+    position: absolute;
+    right: 100px;
+    width: 38px;
+    z-index: 100;
+    display: none;
 }
 #descNav >div{
     width: 22px;
-    height: 22px;
+    height: 21px;
     margin: 2px auto;
     cursor: pointer;
 }
 #descNav >div:hover{
     opacity: 0.7;
 }
+.descUp {
+    background: url("../images/navBtns.jpg") no-repeat scroll 0 -84px transparent !important;
+}
 #descDown{
-    background: url("../images/navBtns.jpg") no-repeat scroll 0 0px transparent !important;
+    background: url("../images/navBtns.jpg") no-repeat scroll 0 0px transparent;
 }
 #descPrev{
     background: url("../images/navBtns.jpg") no-repeat scroll 0 -30px transparent !important;
@@ -516,7 +562,7 @@ input[type="submit"]{
 }
 .navBox{
     background: none repeat scroll 0 0 #FFFFFF;
-    bottom: 40px;
+    bottom: 44px;
     height: 0;
     position: absolute;
     width: auto;
@@ -524,15 +570,21 @@ input[type="submit"]{
     opacity: 0;
 }
 .navBoxShow{
+    min-height: 180px;
+    opacity: 1 !important;
+    height: auto !important;
+}
+.navBoxShowPerm{
+    min-height: 180px;
     opacity: 1 !important;
     height: auto !important;
 }
 #selectMenu{
-    z-index: 15;
     position: absolute;
     width: 100%;
     height: auto;
     bottom: 0;
+    background: none repeat scroll 0 0 #FFFFFF;
 }
 #selectMenu #menu{
     z-index: 10;

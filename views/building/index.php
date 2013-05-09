@@ -1,4 +1,3 @@
-
 <ul id="carousel" class="elastislide-list">
 <?php foreach ($this->gallery as $id => $value) { 
         $description=($value['replace'])?$value['info']:$this->page['content'];
