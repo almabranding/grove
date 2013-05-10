@@ -57,7 +57,6 @@ $(window).load(function() {
         });
     });
     loadCufon();
-
 });
 function loadCufon() {
     Cufon.replace('p,span,label', std);

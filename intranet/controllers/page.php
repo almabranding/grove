@@ -4,12 +4,11 @@ class Page extends Controller {
 
     function __construct() {
         parent::__construct();
-        Auth::handleLogin();
         $this->view->js = array('page/js/custom.js');
     }
     function index() { 
         $this->view->form = $this->model->form();
-        $this->view->projectList = $this->model->getList();
+        $this->view->list = $this->model->getList();
         $this->view->render('page/index');  
     }
     public function view($id) 

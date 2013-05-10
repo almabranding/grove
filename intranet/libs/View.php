@@ -17,6 +17,10 @@ class View {
             require 'views/footer.php';    
         }
     }
+    public function getView($name)
+    {
+        require 'views/' . $name . '.php';
+    }
     function viewUploadFile($id,$bbdd='images'){
         $view= '<h2 style="width:100%">Upload project</h2>
         <div id="dropbox">

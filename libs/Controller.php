@@ -19,7 +19,6 @@ class Controller {
             $this->model = new $modelName();
         }  
         $this->loadLang($name);
-        $this->view->getMenu = $this->model->getMenu($control);
         
     }
     public function loadLang($name, $langPath = 'lang/en/') {

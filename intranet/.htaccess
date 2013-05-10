@@ -14,7 +14,7 @@ RewriteCond %{REQUEST_FILENAME} !-l
 #ErrorDocument 404 /?page=error&msg=wrongurl
 #ErrorDocument 403 /?page=error&msg=forbidden
 #ErrorDocument 401 /?page=error&msg=auth
-RewriteRule ^(.*)$ grove/intranet/index.php?url=$1 [QSA,L]
+RewriteRule ^(.*)$ /grove/intranet/index.php?url=$1 [QSA,L]
 
 #RewriteRule ^captcha/(.*)$ /modules/captcha/cryptographp.php&%{QUERY_STRING} [L]
 #RewriteRule ^error/(.*)/$ ?page=error&msg=$1&%{QUERY_STRING} [L]

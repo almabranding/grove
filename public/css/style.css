@@ -215,9 +215,10 @@ label {
     width: 100px;
 }
 #page{
-    width: 70%;
-    margin: auto;
+    margin: 0 221px;
+    max-width: 1097px;
     padding: 20px;
+    width: 65%;
 }
 #pageDesc{
     margin: auto auto 15px;
@@ -252,8 +253,35 @@ label {
 .body-background{
     background: none repeat scroll 0 0 #FFFFFF;
     height: 100%;
+    overflow: hidden;
     padding: 0 25px;
-    position: absolute !important;  
+    position: relative !important;
+    width: 400px;
+    z-index: 1000 !important;
+}
+.backgroundContainer{
+    float: left;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 100;
+    width: 100%;
+}
+.galleryThumb {
+    background: none repeat scroll 0 0 #FFFFFF;
+    height: 100%;
+    padding: 0 25px;
+    position: absolute !important;
+    background: none repeat scroll 0 0 #FFFFFF;
+    height: 100%;
+    overflow: hidden;
+    padding: 0 25px;
+    position: absolute !important;
+    width: 100%;
+}
+.galleryThumb > img{
+    position: absolute !important;
+    height: 100%;
 }
 .body-background > img{
     position: absolute !important;
@@ -354,6 +382,7 @@ input[type="submit"]{
     margin: 0;
     position: absolute;
     z-index: 1;
+    overflow: visible;
 }
 .labelInfo{
     background: url("../images/labelInfo.png") no-repeat scroll 0 0px transparent;
@@ -391,8 +420,8 @@ input[type="submit"]{
     bottom: 0;
     margin-bottom: 44px;
     overflow: hidden;
-    position: relative;
-    width: 262px;
+    position: absolute;
+    width: 100%;
     z-index: 23;
 }
 .menuTitle ul{
@@ -500,17 +529,26 @@ input[type="submit"]{
    height: 50px; 
    opacity: 1;
 }
+#fadeWhite{
+    background: none repeat scroll 0 0 #FFFFFF;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    display: none;
+}
 #descMenu{
     height: 0;
     opacity: 0;
     overflow: hidden;
     position: absolute;
     width: 100%;
-    z-index: 20;
+    z-index: 24;
 }
 #descMenu #menu{
+    bottom: 0;
+    position: absolute;
     z-index: 20;
-    position: relative;
 }
 #descMenu nav{
     float: left;
@@ -520,8 +558,15 @@ input[type="submit"]{
 }
 #descInfo{
     float: left;
-    margin-top: 11px;
+    margin: 9px 0 23px 275px;
     max-width: 800px;
+    position: relative;
+    text-align: left;
+    width: 65%;
+}
+#descInfoFull{
+    float: left;
+    margin: 9px 0 23px 275px;
     position: relative;
     text-align: left;
     width: 65%;
@@ -534,6 +579,9 @@ input[type="submit"]{
     column-count: 2;
     column-gap: 20px;
 }
+#replace{
+    display: none;
+}
 #descNav{
     bottom: 26px;
     float: right;
@@ -542,7 +590,6 @@ input[type="submit"]{
     right: 100px;
     width: 38px;
     z-index: 100;
-    display: none;
 }
 #descNav >div{
     width: 22px;

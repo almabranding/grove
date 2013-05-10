@@ -1,9 +1,12 @@
 <?php
+
 class Model {
+
     function __construct() {
         $this->db = new Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
     }
-    function getPage($url){
+
+    function getPage($url) {
         $sth = $this->db->prepare("SELECT * FROM page WHERE url = :url");
         $sth->execute(array(
             ':url' => $url
@@ -11,7 +14,8 @@ class Model {
         $data = $sth->fetch();
         return $data;
     }
-    function getPageById($id){
+
+    function getPageById($id) {
         $sth = $this->db->prepare("SELECT * FROM page WHERE id = :id");
         $sth->execute(array(
             ':id' => $id
@@ -19,20 +23,21 @@ class Model {
         $data = $sth->fetch();
         return $data;
     }
-    
-    function getPageByCol($attr){
-        $sth = $this->db->prepare("SELECT * FROM page WHERE ".$attr['col']." = :id");
+
+    function getPageByCol($attr) {
+        $sth = $this->db->prepare("SELECT * FROM page WHERE " . $attr['col'] . " = :id");
         $sth->execute(array(
-            ':id'  => $attr['id']
+            ':id' => $attr['id']
         ));
         $data = $sth->fetch();
         return $data;
     }
-    function getGallery($id){
-        return $this->db->select('SELECT * FROM images WHERE page = :page', 
-            array('page' => $id));
+
+    function getGallery($id) {
+        return $this->db->select('SELECT * FROM images WHERE page = :page', array('page' => $id));
     }
-    function getTemplate($id){
+
+    function getTemplate($id) {
         $sth = $this->db->prepare("SELECT * FROM template WHERE id = :id");
         $sth->execute(array(
             ':id' => $id
@@ -40,59 +45,47 @@ class Model {
         $data = $sth->fetch();
         return $data['URL'];
     }
-    function getTemplatebyCol($attr){
-        $sth = $this->db->prepare("SELECT * FROM template WHERE ".$attr['col']." = :id");
-        
+
+    function getTemplatebyCol($attr) {
+        $sth = $this->db->prepare("SELECT * FROM template WHERE " . $attr['col'] . " = :id");
+
         $sth->execute(array(
-            ':id'  => $attr['id']
+            ':id' => $attr['id']
         ));
         $data = $sth->fetch();
         return $data;
     }
-    function setLang($lang){
-        $this->lang=$lang;
+
+    function setLang($lang) {
+        $this->lang = $lang;
     }
-    public function getMenu($url=''){
-            $m.='<ul class="header_menu">';
-                $m.='<li class="menuTitle"><ul>';
-                $m.='<li class="link"><a href="'.URL.'gallery">Architecture</a></li>';
-                $m.='<li class="link"><a href="'.URL.'gallery">Amenities</a></li>';
-                $m.='<li class="link"><a href="'.URL.'gallery">Residences</a></li>';
-                $m.='<li class="menuOpt">Floorplans</a></li>';
-                $m.='<li class="menuOpt"><a href="'.URL.'team">Team</a></li>';
-                $m.='<li class="menuOpt"><a href="'.URL.'gallery">Inspiration</a></li>';
-                $m.='</ul></li>';
-                $m.='<li class="menuTitle"><ul>';
-                $m.='<li class="menuOpt">Living</li>';
-                $m.='<li class="menuOpt">Area</li>';
-                $m.='</ul></li>';
-                
-        return $m;
+
+    
+
+    public function ValidarDatos($campo) {
+
+        //Array con las posibles cabeceras a utilizar por un spammer
+        $badHeads = array("Content-Type:",
+            "MIME-Version:",
+            "Content-Transfer-Encoding:",
+            "Return-path:",
+            "Subject:",
+            "From:",
+            "Envelope-to:",
+            "To:",
+            "bcc:",
+            "cc:");
+
+        //Comprobamos que entre los datos no se encuentre alguna de
+        //las cadenas del array. Si se encuentra alguna cadena se
+        //dirige a una página de Forbidden
+        foreach ($badHeads as $valor) {
+
+            if (strpos(strtolower($campo), strtolower($valor)) !== false) {
+                header("HTTP/1.0 403 Forbidden");
+                exit;
+            }
+        }
     }
-    public function ValidarDatos($campo){
-	
-	//Array con las posibles cabeceras a utilizar por un spammer
-	$badHeads = array("Content-Type:",
-	"MIME-Version:",
-	"Content-Transfer-Encoding:",
-	"Return-path:",
-	"Subject:",
-	"From:",
-	"Envelope-to:",
-	"To:",
-	"bcc:",
-	"cc:");
-	
-	//Comprobamos que entre los datos no se encuentre alguna de
-	//las cadenas del array. Si se encuentra alguna cadena se
-	//dirige a una página de Forbidden
-	foreach($badHeads as $valor){
-		
-		if(strpos(strtolower($campo), strtolower($valor)) !== false){
-			header("HTTP/1.0 403 Forbidden");
-			exit;
-		}
-	
-	}
-}
+
 }

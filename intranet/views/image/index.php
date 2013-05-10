@@ -1,4 +1,3 @@
-<h1>Help</h1>
 
     <div class="white_box hide" id="newProject">
         <h2 style="width:100%">Upload project</h2>

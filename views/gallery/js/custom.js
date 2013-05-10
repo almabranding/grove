@@ -2,38 +2,105 @@ var sly;
 var time = 1500;
 var item = 0;
 var carouselPos = 0;
-(function() {
-    var $frame = $('#centered');
-    var $wrap = $frame.parent();
+var $frame = $('#centered');
+var $wrap = $frame.parent();
+var $options = {
+    horizontal: 1,
+    itemNav: 'basic',
+    smart: 1,
+    mouseDragging: 1,
+    touchDragging: 1,
+    releaseSwing: 1,
+    startAt: 0,
+    scrollBar: $wrap.find('.scrollbar'),
+    speed: time / 2,
+    elasticBounds: 1,
+    easing: 'linear',
+    dragHandle: 1,
+    dynamicHandle: 1,
+    clickBar: 1,
+};
 
-    // Call Sly on frame
-
-    var $options = {
-        horizontal: 1,
-        itemNav: 'basic',
-        smart: 1,
-        mouseDragging: 1,
-        touchDragging: 1,
-        releaseSwing: 1,
-        startAt: 0,
-        scrollBar: $wrap.find('.scrollbar'),
-        speed: time / 2,
-        elasticBounds: 1,
-        easing: 'linear',
-        dragHandle: 1,
-        dynamicHandle: 1,
-        clickBar: 1,
-    };
-    sly = new Sly($frame, $options).init();
-}());
 $(window).load(function() {
-
+    $('#descMenu').append($('#replace').html());
+    $('#replace').html(''); 
+    loadCufon();
+    sly = new Sly($frame, $options).init();
     var max = $('.bgContainer').size();
     $('#descDown').on('click', function() {
-        $(this).addClass('descUp');
-        $('#menuprimary').removeClass('navBoxShowPerm', 500);
-        $('#descMenu').removeClass('navBoxShow', 500);
+        $('.scrollbar').show();
+        sly = new Sly($frame, $options).init();
+        sly.toCenter(carouselPos, true);
+        var offset = $('.bgContainer.selected').offset();
+        $('.bgContainer.selected').find(".backgroundContainer").animate(
+        {
+            left: offset.left,
+            width: 400,
+        },
+        {
+            duration: time,
+            step: function(now, fx) {
+                sly.reload();
+                $(this).change();
+            },
+            complete: function() {
+                $(this).change();
+                $('#descMenu').removeClass('navBoxShow', 500);
+                $('.bgContainer.selected').removeClass('selected').removeAttr('style');
+
+            }
+        });
+        /*$('.bgContainer.selected').animate(
+         {
+         left: 0,
+         width: 400,
+         },
+         {
+         duration: time,
+         step: function(now, fx) {
+         sly.reload();
+         $(this).change();
+         },
+         complete: function() {
+         $(this).css({
+         position: 'relative',
+         });
+         $(this).change();
+         $(this).removeClass('selected').removeAttr('style');
+         $('#descMenu').removeClass('navBoxShow', 500);
+         
+         }
+         });*/
+
     });
+    $('.bgControl').on('click', function() {
+    var max = $('.bgContainer').index();
+    $('.preload').show();
+    var nowPos = carouselPos;
+    if ($(this).is('#descPrev')) {
+        carouselPos--;
+        if (carouselPos < 0)
+            carouselPos = max;
+    }
+    if ($(this).is('#descNext')) {
+        carouselPos++;
+        if (carouselPos > max)
+            carouselPos = 0;
+    }
+    $('#fadeWhite').fadeIn(function() {
+        $('.bgContainer').eq(nowPos).removeClass('selected').removeAttr('style');
+        $('.bgContainer').eq(carouselPos).addClass('selected').css('width', $(window).width() - 20);
+        $('.bgContainer').eq(carouselPos).find(".body-background").ezBgResize();
+        $('.bgContainer').eq(carouselPos).find(".backgroundContainer").change();
+        $('.preload').delay(500).hide('fast', function() {
+            $('#fadeWhite').fadeOut(function() {
+            });
+            $('.preload').hide();
+        });
+    });
+
+    //changeBG(next);
+});
     /*$('#descPrev').on('click', function() {
      if (item > 0)
      item--;
@@ -109,35 +176,27 @@ function selectImage(li) {
         'z-index': 1
     });
     li.find(".body-background").ezBgResize();
-
+    li.addClass('selected');
     var offset = li.offset();
-    li.animate(
-            {
-                left: "-=" + (offset.left),
-                width: $(window).width() - 20,
-            },
-            {
-                duration: time,
-                step: function(now, fx) {
-                    sly.reload();
-                    $(this).change();
-                },
-                complete: function() {
-                    $(this).css({
-                        position: 'absolute',
-                        left: 0
-                    });
-                    $(this).change();
-                    sly.destroy();
-                    $('.scrollbar').hide();
-                    $('#descNav').show();
-                    $(this).addClass('selected');
-                    $('#descDown').removeClass('descUp');
-                    $('#menuprimary').addClass('navBoxShowPerm', 500);
-                    $('#descMenu').addClass('navBoxShow', 500);
+    li.find(".backgroundContainer").animate(
+    {
+        left: "-=" + (offset.left),
+        width: $(window).width() - 20,
+    },
+    {
+        duration: time,
+        step: function(now, fx) {
+            sly.reload();
+            $(this).change();
+        },
+        complete: function() {
+            $(this).change();
+            sly.destroy();
+            $('.scrollbar').hide();
+            $('#descMenu').addClass('navBoxShow', 500);
 
-                }
-            });
+        }
+    });
 }
 function selectImageByArrow(li) {
     item = li.index();
@@ -172,36 +231,6 @@ function selectImageByArrow(li) {
             });
 
 }
-$('.bgControl').on('click', function() {
-    var max = $('.bgContainer').index();
-    $('.preload').show();
-    var nowPos = carouselPos;
-    $('.bgList').fadeOut();
-    if ($(this).is('#descPrev')) {
-        carouselPos--;
-        if (carouselPos < 0)
-            carouselPos = max;
-    }
-    if ($(this).is('#descNext')) {
-        carouselPos++;
-        if (carouselPos > max)
-            carouselPos = 0;
-    }
-    $('.bgList').fadeOut(function() {
-        $('.bgContainer').eq(nowPos).removeClass('selected').removeAttr('style');
-        $('.bgContainer').eq(carouselPos).addClass('selected').css('width',$(window).width() - 20);
-        $('.bgContainer').eq(carouselPos).find(".body-background").ezBgResize();
-        
-        $('.preload').delay(500).hide('fast', function() {
-            $('.bgList').fadeIn(function() {
-                $('.bgContainer').eq(carouselPos).change();
-            });
-            $('.preload').hide();
-        });
-    });
-
-    //changeBG(next);
-});
 function changeBG(link) {
     var img = link.find('img').attr('src');
     $('.imgBG').fadeOut(function() {

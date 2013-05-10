@@ -4,18 +4,18 @@ class Page extends Controller {
 
     function __construct() {
         parent::__construct();
-        $this->view->js = array('page/js/custom.js');
+        $this->view->js = array('team/js/custom.js');
     }
     
     function index() {
         $this->view->msg = 'This page doesnt exist';
         $this->view->render('error/index');
     }
-    function view($url) {
-        $this->model->url=$url;
+    public function view($url,$pic=true) {
         $this->view->url=$url;
         $this->view->page=$this->model->getPage($url);
-        $this->view->render('page/index');
+        $this->view->gallery=$this->model->getGallery($this->view->page['id']);
+        $this->view->render('team/index');
     }
     
 }

@@ -7,6 +7,9 @@ class Image_Model extends Model {
         $action=($type=='add')?URL.'image/create':URL.'image/edit/'.$id;
         if ($type=='edit')
             foreach ($this->getInfo($id) as $value);
+        $group[0]='None';
+        foreach ($this->getGroups($value['page']) as $groups)
+            $group[$groups['pos']]=$groups['pos'].'. '.$groups['name'];
         $form = new Zebra_Form('addProject','POST',$action);
         $form->add('hidden', '_add', 'page');
         $form->add('hidden', 'page', $value['page']);
@@ -17,15 +20,33 @@ class Image_Model extends Model {
         $form->add('label', 'label_caption', 'caption', 'Caption');
         $obj = $form->add('text', 'caption', $value['caption'], array('autocomplete' => 'off','required'  =>  array('error', 'Name is required!')));
         
-        $form->add('label', 'label_thumb', 'thumb', 'Thumbnail Width');
-        $obj = $form->add('select', 'thumb');
-        $obj->add_options(array(
-            '' => '',
-            '228' => '228px',
-            '358' => '358px',
-            '487' => '487px',
-            '616' => '616px'
+        $form->add('label', 'label_description', 'description', 'Description');
+        $obj=$form->add('textarea', 'description', $value['description'], array('autocomplete' => 'off'));
+        
+        /*$form->add('label', 'label_group', 'group', 'Group');
+        $obj = $form->add('select', 'group',$value['group'], array('autocomplete' => 'off'));
+        $obj->add_options($group);
+        
+        $obj = $form->add('text', 'group', $value['group'], array('autocomplete' => 'off'));
+        $obj->set_attributes(array(
+            'style'    => 'width:20px',
+        ));*/
+        
+        $form->add('label', 'label_hide', 'hide', 'Hide in gallery');
+        $obj = $form->add('checkboxes', 'hide',
+            array(
+                '1' => ''
+            )
+        );
+        $obj->set_attributes(array(
+            'autocomplete' => 'off'
         ));
+        if($value['hide']){
+            $obj->set_attributes(array(
+                'checked' => 'checked'
+            ));
+        }
+        
         $form->add('label', 'label_replace', 'replace', 'Replace text');
         $obj = $form->add('checkboxes', 'replace',
             array(
@@ -57,19 +78,25 @@ class Image_Model extends Model {
         return $form;
     }
     public function getInfo($id){
-        $consulta=$this->db->select('SELECT * FROM images WHERE id = :id', 
+        return $this->db->select('SELECT * FROM images WHERE id = :id', 
            array('id' => $id));
-        return $consulta;
+    }
+    public function getGroups($page){
+        return $this->db->select('SELECT * FROM imagesGroups WHERE page = :page ORDER BY pos', 
+           array('page' => $page));
     }
     public function edit($id){
         $data = array(
             'name'      => $_POST['name'],
             'caption'   => $_POST['caption'],
+            'description'=>$_POST['description'],
             'vimeo'     => $_POST['vimeo'],
+            'group'     => $_POST['group'],
             'replace'   => $_POST['replace'],
-            'info'  => stripslashes($_POST['info'])
+            'hide'      => $_POST['hide'],
+            'info'      => stripslashes($_POST['info'])
         );
-        $this->db->update('images', $data, 
+        echo $this->db->update('images', $data, 
             "`id` = '{$id}'");
             
         $uploadDir = UPLOADIMG.$_POST['page'].'/';

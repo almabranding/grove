@@ -1,4 +1,4 @@
-<h1>Help</h1>
+
 <div class="white_box hide" id="newImage" style="width:auto;left:30%;position:absolute;">
     <?php $this->viewUploadFile($this->id);?>
 </div>

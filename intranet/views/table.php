@@ -1,15 +1,18 @@
 <form id="mainform" action="">
-    <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">      
+    <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table" class='<?php echo ($this->list['sort'])?'sortable':'' ?>'>      
         <?php
         foreach ($this->list as $k => $w) {
             $alternate = (($k % 2) == 0) ? 'alternate-row' : '';
-            echo ' <tr class="' . $alternate . '">';
-            if ($k == 0) {
-                foreach ($w as $k => $v) {
-                    $style = 'width:' . $v['title'];
-                    echo '<th class="table-header-repeat line-left minwidth-1" style=""><a href="' . $style . '">' . $v['title'] . '</a></th>';
+            $id=($k == 0)?'titleTable':$w['id'];
+            echo ' <tr id="'.$id.'" class="' . $alternate . '">';
+            if ($k == 0 && is_array($w)) {
+                foreach ($w as $v) {
+                    $style = 'width:' . $v['width'];
+                    $colspan = 'colspan="' . $v['colspan'].'"';
+                    echo '<th class="table-header-repeat line-left minwidth-1" style="text-transform:capitalize;' . $style . '" '.$colspan.'><a href="#">' . $v['title'] . '</a></th>';
                 }
-            } else {
+            }
+            if ($k != 0 && is_array($w)) {
                 foreach ($w as $k => $v) {
 
                     echo '<td>' . $v . '</td>';

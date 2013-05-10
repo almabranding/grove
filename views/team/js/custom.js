@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#descMenu').html($('#replace').html());
+    $('#descMenu').append($('#replace').html());
     $('#replace').html('');
     $('#descMenu').addClass('navBoxShow');
     $(window).on('resize',function(){

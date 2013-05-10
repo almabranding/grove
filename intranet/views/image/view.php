@@ -1,4 +1,4 @@
-<h1>Help</h1>
+
 <div>
     <?php $this->form->render(); ?>
 </div>

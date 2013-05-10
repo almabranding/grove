@@ -39,7 +39,7 @@ class Page_Model extends Model {
             $obj->set_attributes(array(
                 'style'    => 'float:none',
             ));
-            $obj=$form->add('textarea', 'content', $project['content'], array('autocomplete' => 'off'));
+            $obj=$form->add('textarea', 'content', htmlentities($project['content']), array('autocomplete' => 'off'));
             $obj->set_attributes(array(
                 'class'    => 'wysiwyg',
             ));
@@ -53,24 +53,25 @@ class Page_Model extends Model {
     
     public function getList() {
         $lista=$this->db->select("SELECT * FROM page");
+        $b['sort']=true;
         $b[0]=array(
            array(
-               "value"  =>"Id",
+               "title"  =>"Id",
                "width"  =>"5%"
            ),array(
-               "value"  =>"Name",
+               "title"  =>"Name",
                "width"  =>"10%"
            ),array(
-               "value"  =>"Template",
+               "title"  =>"Template",
                "width"  =>"20%"
            ),array(
-               "value"  =>"Menu",
+               "title"  =>"Menu",
                "width"  =>"20%"
            ),array(
-               "value"  =>"Description",
+               "title"  =>"Description",
                "width"  =>"20%"
            ),array(
-               "value"  =>"Options",
+               "title"  =>"Options",
                "width"  =>"10%"
            ));
                      
@@ -102,17 +103,18 @@ class Page_Model extends Model {
         $data = array(
             'name' => $_POST['name'],
             'template' => $_POST['template'],
+            'menu' => $_POST['menu'],
             'description' => $_POST['description'],
             'url' => filter_var(urlencode(strtolower($_POST['name'])), FILTER_SANITIZE_URL)
         );
         $page=$this->db->insert('page', $data);
         $data = array(
             'name' => $_POST['name'],
-            'url' => $url = filter_var(urlencode(strtolower($_POST['name'])), FILTER_SANITIZE_URL),
+            'url' => strtolower($this->getTemplate($_POST['template'],'url').'/view/'.urlencode($_POST['name'])),
             'parent' => $_POST['menu'],
             'page' => $page
         );
-        $this->db->insert('menu', $data);
+        if($_POST['menu']!='')$this->db->insert('menu', $data);
     }
     public function edit($id){
         $data = array(
@@ -120,7 +122,7 @@ class Page_Model extends Model {
             'template' => $_POST['template'],
             'description' => $_POST['description'],
             'content' => stripslashes($_POST['content']),
-            'url' => urlencode(strtolower($_POST['name'])),
+            'url' => filter_var(urlencode(strtolower($_POST['name'])), FILTER_SANITIZE_URL),
             'menu' => $_POST['menu']
         );
         $this->db->update('page', $data, 
@@ -128,14 +130,14 @@ class Page_Model extends Model {
             
         $data = array(
             'name' => $_POST['name'],
-            'url' => urlencode(strtolower($_POST['name'])),
+            'url' => strtolower($this->getTemplate($_POST['template'],'url').'/view/'.urlencode($_POST['name'])),
             'parent' => $_POST['menu']
         );
         $this->db->update('menu', $data, 
             "`page` = '{$id}'");
     }
     public function delete($id){
-        $this->db->delete('page', "`page` = {$id}");
+         $this->db->delete('menu', "`page` = {$id}");
          $this->db->delete('page', "`id` = {$id}");
          $this->delTree(UPLOAD.$id);
     }   

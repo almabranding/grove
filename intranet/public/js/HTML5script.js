@@ -1,5 +1,5 @@
 $(function(){
-	var URL='/test/intranet/';
+	var URL='/grove/intranet/';
 	var dropbox = $('#dropbox'),
         message = $('.message', dropbox);
         var project = $('#project').val();

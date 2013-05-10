@@ -9,11 +9,11 @@ class Login_Model extends Model
 
     public function run()
     {
-        $sth = $this->db->prepare("SELECT * FROM users WHERE 
-                name = :name AND passcode = :passcode");
+        $sth = $this->db->prepare("SELECT * FROM intra_users WHERE 
+                username = :username AND password = :password");
         $sth->execute(array(
-            ':name' => $_POST['login'],
-            ':passcode' => Hash::create('sha256', $_POST['password'], HASH_PASSWORD_KEY)
+            ':username' => $_POST['login'],
+            ':password' => Hash::create('sha256', $_POST['password'], HASH_PASSWORD_KEY)
         ));
         $data = $sth->fetch();
         $count =  $sth->rowCount();
@@ -25,17 +25,8 @@ class Login_Model extends Model
             Session::set('userid', $data['userid']);
             header('location: '.URL.'page');
         } else {
-            header('location: '.URL.'login/error');
+            header('location: '.URL);
         }
-        
-    }
-    public function out()
-    {
-        Session::init();
-        Session::set('loggedIn', false);
-        Session::destroy();
-        header('location: '.URL);
-        exit;
         
     }
     

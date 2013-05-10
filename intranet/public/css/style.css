@@ -258,9 +258,8 @@ header {
     float: left;
     width: 196px;
     height: 64px;
-    margin: 20px 0 0 20px;
+    margin: 34px 34px 0;
     color:#ababab;    
-    font-family: GillSans;
 }
 .header_menu{
     height: 40px;
@@ -449,7 +448,7 @@ header {
 .linkExt{
   height: 12px !important;
 }
-.tableTitle li{
+.table-header-repeat{
     background-image: -ms-linear-gradient(top, #828282 0%, #000508 100%);
     background-image: -moz-linear-gradient(top, #828282 0%, #000508 100%);
     background-image: -o-linear-gradient(top, #828282 0%, #000508 100%);
@@ -462,7 +461,7 @@ header {
     width: 29px;
     border-left: 2px solid #373737 !important;
 }
-.tableTitle a {
+.table-header-repeat a{
     background: url("../images/table_sort_arrow.gif") no-repeat scroll right center transparent;
     color: #FFFFFF;
     font-family: Tahoma;
@@ -499,14 +498,13 @@ tableTitle li {
 .tableContent .colsView{
      border: 1px solid #D2D2D2;
 }
-.tableView > li{
+#product-table th{
     text-align: left;
-    min-width: 110px;
 }
-.tableView .alternate-row{
+#product-table .alternate-row{
     background: none repeat scroll 0 0 #ECECEC;
 }
-.tableView .edit {
+#product-table .edit {
     background: url("../images/table_icon_1.gif") no-repeat scroll 0 0 transparent;
     display: block;
     float: left;
@@ -514,10 +512,10 @@ tableTitle li {
     margin: 0 8px 0 0;
     width: 24px;
 }
-.tableView .edit:hover {
+#product-table .edit:hover {
     background: url("../images/table_icon_1.gif") no-repeat scroll 0 -24px transparent;
 }
-.tableView .delete {
+#product-table .delete {
     background: url("../images/table_icon_2.gif") no-repeat scroll 0 0 transparent;
     display: block;
     float: left;
@@ -525,7 +523,7 @@ tableTitle li {
     margin: 0 8px 0 0;
     width: 24px;
 }
-.tableView .delete:hover {
+#product-table .delete:hover {
     background: url("../images/table_icon_2.gif") no-repeat scroll 0 -24px transparent;
 }
 

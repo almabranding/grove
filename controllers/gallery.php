@@ -11,5 +11,11 @@ class Gallery extends Controller {
     function index() {
         $this->view->render('gallery/index');
     }
+    public function view($url,$pic=true) {
+        $this->view->url=$url;
+        $this->view->page=$this->model->getPage($url);
+        $this->view->gallery=$this->model->getGallery($this->view->page['id']);
+        $this->view->render('gallery/index');
+    }
     
 }
