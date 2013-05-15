@@ -26,7 +26,8 @@
     position: relative;
     width: auto;
     top: 20px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 html, body {
@@ -139,7 +140,7 @@ footer nav li{
     width: 48px;
     height: 48px;
     cursor: pointer;
-    z-index: 1;
+    z-index: 1001;
     display: none;
 }
 #floater {
@@ -215,8 +216,8 @@ label {
     width: 100px;
 }
 #page{
-    margin: 0 221px;
-    max-width: 1097px;
+    margin: 20px auto;
+    max-width: 1150px;
     padding: 20px;
     width: 65%;
 }
@@ -260,12 +261,16 @@ label {
     z-index: 1000 !important;
 }
 .backgroundContainer{
+    
+    background-size: cover;
     float: left;
     height: 100%;
     overflow: hidden;
     position: relative;
-    z-index: 100;
     width: 100%;
+    z-index: 10;
+    border-right: 20px solid #ffffff;
+    border-left: 20px solid #ffffff;
 }
 .galleryThumb {
     background: none repeat scroll 0 0 #FFFFFF;
@@ -288,11 +293,14 @@ label {
     height: 100%;
 }
 .logoBox{
-    width: 167px;
-    height: 40px;
+    background-image: url('../images/logo.png');
+    width: 217px;
+    height: 71px;
     margin: auto;
-    position: relative;
-    z-index: 1;
+    position: absolute;
+    left:50px;
+    top:50px;
+    z-index: 11;
 }
 .accessFrame{
     background: #f7f9f9;
@@ -417,7 +425,7 @@ input[type="submit"]{
 }
 #menuprimary{
     background: none repeat scroll 0 0 #FFFFFF;
-    bottom: 0;
+    bottom: 0px;
     margin-bottom: 44px;
     overflow: hidden;
     position: absolute;
@@ -498,7 +506,7 @@ input[type="submit"]{
 }
 .container-margin{
     background: none repeat scroll 0 0 #EBEBEB;
-    height: 100%;
+    height: auto;
     margin: 0 20px;
     position: relative;
     z-index: -4;
@@ -543,7 +551,7 @@ input[type="submit"]{
     overflow: hidden;
     position: absolute;
     width: 100%;
-    z-index: 24;
+    z-index: 20;
 }
 #descMenu #menu{
     bottom: 0;
@@ -558,18 +566,18 @@ input[type="submit"]{
 }
 #descInfo{
     float: left;
-    margin: 9px 0 23px 275px;
-    max-width: 800px;
+    margin: 15px 0 15px 20px;
+    max-width: 1000px;
     position: relative;
     text-align: left;
     width: 65%;
 }
 #descInfoFull{
-    float: left;
-    margin: 9px 0 23px 275px;
+    margin: 50px auto;
     position: relative;
     text-align: left;
     width: 65%;
+    max-width: 1150px;
 }
 .colsView{
      -moz-column-count: 2;
@@ -583,11 +591,11 @@ input[type="submit"]{
     display: none;
 }
 #descNav{
-    bottom: 26px;
     float: right;
-    margin: 11px;
+    margin: 0;
     position: absolute;
-    right: 100px;
+    right: 13px;
+    top: 15px;
     width: 38px;
     z-index: 100;
 }
@@ -614,7 +622,7 @@ input[type="submit"]{
 }
 .navBox{
     background: none repeat scroll 0 0 #FFFFFF;
-    bottom: 44px;
+    bottom: 0px;
     height: 0;
     position: absolute;
     width: auto;
@@ -622,7 +630,7 @@ input[type="submit"]{
     opacity: 0;
 }
 .navBoxShow{
-    min-height: 180px;
+    min-height: 118px;
     opacity: 1 !important;
     height: auto !important;
 }

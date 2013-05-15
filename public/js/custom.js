@@ -9,7 +9,7 @@ var h2 = ({
     fontFamily: 'Din',
     color: '#333333',
     letterSpacing: '0.3em',
-    fontSize: '21px',
+    fontSize: '16px',
 });
 var h3 = ({
     fontFamily: 'Din',
@@ -31,17 +31,17 @@ var menuLink = ({
     fontFamily: 'Din',
     color: '#7f7e82',
     letterSpacing: '0.3em',
-    fontSize: '11px',
+    fontSize: '13px',
     hover: {
         color: '#2d2427',
-        fontSize: '11px'
+        fontSize: '13px'
     }
 });
 var menu = ({
     fontFamily: 'Din',
-    color: '#2d2427',
+    color: '#ffffff',
     letterSpacing: '0.3em',
-    fontSize: '13px',
+    fontSize: '16px',
 });
 
 $(window).load(function() {
@@ -62,7 +62,7 @@ function loadCufon() {
     Cufon.replace('p,span,label', std);
     Cufon.replace('h2', h2);
     Cufon.replace('h3', h3);
-    Cufon.replace('.menuOpt', menuLink);
-    Cufon.replace('.menuTitlespan', menu);
+    Cufon.replace('.menuLink', menuLink);
+    Cufon.replace('.menu', menu);
     Cufon.replace('.link', link);
 }

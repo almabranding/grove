@@ -15,7 +15,7 @@ class Page extends Controller {
         $this->view->url=$url;
         $this->view->page=$this->model->getPage($url);
         $this->view->gallery=$this->model->getGallery($this->view->page['id']);
-        $this->view->render('team/index');
+        $this->view->render('page/index');
     }
     
 }

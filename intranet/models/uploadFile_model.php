@@ -14,18 +14,18 @@ class uploadFile_Model extends Model {
             $pic = $_FILES[$name];
             $pathinfo = pathinfo($pic["name"]);
             $ext='.'.$pathinfo['extension'];
-            $file = ($pathinfo['filename'].'_'.rand());
+            $file = ($pathinfo['filename']);
             $nameFile=$file.$ext;
             $jpgFile=$file.'.jpg';
             if(!in_array($pathinfo['extension'],$allowed_ext)){
                 $this->exit_status('Only '.implode(',',$allowed_ext).' files are allowed!');
             }	  
             if(move_uploaded_file($pic['tmp_name'], $uploadDir.$nameFile)){
-                if($pathinfo['extension']=='png')
-                    $data=$this->png2jpg($uploadDir.$nameFile,$uploadDir.$jpgFile, 90 );
-                $data=$this->createThumbs($jpgFile,$uploadDir, $uploadDir, $thumbWidth );
+                /*if($pathinfo['extension']=='png')
+                    $data=$this->png2jpg($uploadDir.$nameFile,$uploadDir.$jpgFile, 90 );*/
+                $data=$this->createThumbs($nameFile,$uploadDir, $uploadDir, $thumbWidth );
                 $this->exit_status('File was uploaded successfuly!');
-                $data['file']=$jpgFile;
+                $data['file']=$nameFile;
                 $data['name']=$file;
                 return $data;
             }
@@ -79,14 +79,18 @@ class uploadFile_Model extends Model {
     public function png2jpg($originalFile, $outputFile, $quality) {
         $image = imagecreatefrompng($originalFile);
         imagejpeg($image, $outputFile, $quality);
-        unlink($originalFile);
+        //unlink($originalFile);
         imagedestroy($image);
     }
     public function createThumbs($fname,$pathToImages, $pathToThumbs, $thumbWidth ) 
     {
         $info = pathinfo($pathToImages . $fname);
         if ( strtolower($info['extension']) == 'jpg' ) $img = imagecreatefromjpeg( "{$pathToImages}{$fname}" );
-        if ( strtolower($info['extension']) == 'png' ) $img = imagecreatefrompng( "{$pathToImages}{$fname}" );
+        if ( strtolower($info['extension']) == 'png' ){
+            $img = imagecreatefrompng( "{$pathToImages}{$fname}" );
+            imagealphablending($img, false);
+            imagesavealpha($img, true);
+        }
 
           $width = imagesx( $img );
           $height = imagesy( $img );

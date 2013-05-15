@@ -807,7 +807,7 @@
                 a=li.find('.primaryInfo').is(':visible');
                 if(a){
                     t=li.find('.primaryImage').width();
-                    c=li.find('.primaryInfo').width()+20;
+                    c=li.find('.primaryInfo').width()+21;
                     var rc=(wCarrousel-c);
                     li.find('.primaryImage').css({
                         'max-width': rc+'px'

@@ -1,6 +1,5 @@
 var carousel;
 var carouselPos=0;
-var ROOT='/glass/';
 $(window).load(function(){  
     carousel=$( '#carousel' ).elastislide({
         minItems: 1
@@ -12,7 +11,7 @@ $(window).load(function(){
         isFitWidth: true
     });
     $('#gallerys').masonry('reload');
-    
+    if(checkCookie('fitScreen'))fitScreen();
 });
 $('.fitScreen').on('click',function(){
    fitScreen();
@@ -27,7 +26,6 @@ $('.gallerysBoxImg img').on('click',function(){
 function control(btn){
     if(btn==='next') carouselPos++;
     if(btn==='prev') carouselPos--;
-    console.log(carouselPos);
 }
 $('.bgControl').on('click',function(){
     var max=$('.gallerysBox').length-1;
@@ -39,22 +37,17 @@ $('.bgControl').on('click',function(){
         carouselPos++;
         if(carouselPos>max)carouselPos=0;
     }
-    console.log(carouselPos);
     var img=$('img[ref="'+carouselPos+'"]');
     changeBG(img);
 });
 function fitScreen(){
      if(!$("#container").hasClass('fullScreen')){
          jQuery('html,body').animate({scrollTop: $("#carousel").offset().top}, 1000);
+         $('#wrapper').toggleClass("fullScreen");
          $('#container').toggleClass("fullScreen");
          $('#gallerys').masonry('reload');
         var URLBG=$('img[ref="'+carouselPos+'"]').attr('title');
-        $('.imgBG').attr('src',URLBG);
-        /*$("#body-background").ezBgResize({
-            img     : URLBG,
-            opacity : 1,
-            center  : true		
-        }); */
+        $('#imgFull').append('<iframe src="'+URLBG+'" width="100%" height="100%"  frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
         $("#imgFull").fadeIn();
         $('.preload').hide();
         $('.elastislide-wrapper').css(
@@ -64,19 +57,10 @@ function fitScreen(){
                 width:0
             }
         );
-        //$('#whiteBG').css('display','block');
-        //$('#whiteBG').css('height',$('#imgFull').height());
-        $('#gallerys').css('left','10px');
-        $('#wrapper').css('background-position','right center');
         $('#gallerys').masonry('reload');
         resampleBG();    
     }else{
-          
-        //$('#whiteBG').css('display','none');
-        $('#gallerys').css('left','0');
-        $('#wrapper').css('background-position','center center');
         $('#gallerys').masonry('reload');
-         
         $("#imgFull").delay(1000).fadeOut(function(){
             $('.elastislide-wrapper').css(
                 {
@@ -85,8 +69,9 @@ function fitScreen(){
                   width:'auto'
                 }
             );  
-                $('#container').toggleClass("fullScreen");
-                $('#gallerys').masonry('reload');
+            $('#wrapper').toggleClass("fullScreen");
+            $('#container').toggleClass("fullScreen");
+            $('#gallerys').masonry('reload');
             carousel._slideTo(carouselPos);
         });
     }
@@ -96,24 +81,18 @@ function fitScreen(){
 function changeBG(img){
     jQuery('html,body').animate({scrollTop: $("#carousel").offset().top}, 1000);
     carouselPos=$(img).attr('ref');
-    var link=$(img).attr('title');
+    var URLBG=$(img).attr('title');
     carousel._slideTo(carouselPos);
     $('.preload').show();
-    $('.imgBG').fadeOut(function(){
-        $(this).attr('src','');
-        $(this).load(link,function(){
-            $(this).attr('src',link);
-            $('.preload').delay(100).hide('fast',function(){ 
-                $('.imgBG').fadeIn();
-                resampleBG();
-            });;
-        });
+    $('#imgFull iframe').fadeOut(function(){
+        $(this).remove();
+        $('#imgFull').append('<iframe src="'+URLBG+'" width="100%" height="100%"  frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
+        $("#imgFull").fadeIn();
+        $('.preload').hide();
     });
     
 }
 function resampleBG(){
-        var Wh=$(window).height()-180;
-        var img = document.getElementById('imgBG'); 
-        var bgH=Math.min(Wh,img.clientHeight);
-        $('#imgFull').css('height',img.clientHeight);
+    var Wh=$(window).height()-180;
+    $('#imgFull').css('height',Wh);
 }

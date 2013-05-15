@@ -1,7 +1,13 @@
 var carousel;
 var carouselPos=0;
-var ROOT='/glass/';
 $(window).load(function(){  
+    $('a').on('click',function (e) {
+        var anchor=$(this);
+        $('.carouselBox').fadeOut('slow',function(){
+            location.hash = anchor.attr('rel');
+            $(this).fadeIn('slow');
+        });
+    });
     $('#gallerys').masonry({
         itemSelector: '.gallerysBox',
         columnWidth: 130,
@@ -14,16 +20,17 @@ $(window).load(function(){
     var spPos = 153;
     var sW;
     var sH;
-    
-        $('.map').each(function(){
-            $(this).smoothZoom({
-                zoom_MAX:200,
-                button_SIZE:22,
-                pan_BUTTONS_SHOW: 'NO',
-                button_ALIGN:'bottom center',
-                zoom_OUT_TO_FIT:'NO'
-            });
+    $('.map').each(function(){
+        $(this).smoothZoom({
+            zoom_MAX:200,
+            button_SIZE:22,
+            pan_BUTTONS_SHOW: 'NO',
+            button_ALIGN:'bottom center',
+            zoom_OUT_TO_FIT:'NO'
         });
+    });
+    //if(checkCookie('fitScreen'))fitScreen();
+    //if($('.gallerysBox').length===1) $('.bgControl').hide();
    
     
 });
@@ -58,6 +65,7 @@ function fitScreen(){
      if(!$("#container").hasClass('fullScreen')){
         jQuery('html,body').animate({scrollTop: $("#carousel").offset().top}, 1000);
         $('#container').toggleClass("fullScreen");
+        $('#wrapper').toggleClass("fullScreen");
         $('#gallerys').masonry('reload');
         var URLBG=$('img[ref="'+carouselPos+'"]').attr('title');
         $('.imgBG').attr('src',URLBG);
@@ -70,13 +78,9 @@ function fitScreen(){
                 width:0
             }
         );
-        $('#gallerys').css('left','10px');
-        $('#wrapper').css('background-position','right center');
         $('#gallerys').masonry('reload');
         resampleBG();    
     }else{
-        $('#gallerys').css('left','0');
-        $('#wrapper').css('background-position','center center');
         $('#gallerys').masonry('reload');   
         $("#imgFull").delay(1000).fadeOut(function(){
             $('.map-list').css(
@@ -86,10 +90,11 @@ function fitScreen(){
                   width:'auto'
                 }
             );  
+            $('#wrapper').toggleClass("fullScreen");
             $('#container').toggleClass("fullScreen");
             $('#gallerys').masonry('reload');
             var parent=$('img[ref="'+carouselPos+'"]').parent();
-            window.location = parent.attr('href');
+            location.hash = parent.attr('rel');
         });
     }
     $('#gallerys').masonry('reload');

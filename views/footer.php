@@ -1,38 +1,33 @@
 <div class="clr"></div></div><div class="clr"></div>
-<div id="descMenu" class="navBox">
-    <nav id="menu">
-    <?php echo menu::getMenu(); ?>
-    </nav>
-</div>
 <div id="selectMenu">
 <nav id="menuprimary" class="navBox">
-    <?php echo menu::getMenu(); ?>
+    <?php echo Menu::getMenu(); ?>
 </nav>
 <footer>
     <div class="mapSubBar clr">
     <nav class="barLeft">
         <ul>
             <li>
-                Building
+                <span class="menu">Building</span>
             </li>
             <li>
-                Neighborhood
+                <span class="menu">Neighborhood</span>
             </li>
         </ul>
     </nav>
     <nav class="barRight">
         <ul>
             <li>
-                Disclaimer
+                <span class="menu">Disclaimer</span>
             </li>
             <li>
-                Contact
+                <span class="menu">Contact</span>
             </li>
             <li>
-                Facebook
+                <span class="menu">Facebook</span>
             </li>
             <li>
-                Twitter
+                <span class="menu">Twitter</span>
             </li>
             <li>
                 <img alt="Terra Group" src="<?php echo URL;?>/public/images/terraLogo.png" />
@@ -48,7 +43,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
     <script src="<?php echo URL;?>public/js/custom.js"></script>
     <script src="<?php echo URL;?>public/js/cufon-yui.js"></script>
-    <script src="<?php echo URL;?>public/js/DIN_400.font.js"></script>
+    <script src="<?php echo URL;?>public/js/DIN_500.font.js"></script>
 <?php
     if (isset($this->js)) 
         foreach ($this->js as $js)

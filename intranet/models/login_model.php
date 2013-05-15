@@ -19,13 +19,14 @@ class Login_Model extends Model
         $count =  $sth->rowCount();
         if ($count > 0) {
             // login
+            echo 2;
             Session::init();
             Session::set('role', $data['role']);
             Session::set('loggedIn', true);
             Session::set('userid', $data['userid']);
             header('location: '.URL.'page');
         } else {
-            header('location: '.URL);
+            header('location: '.URL.'page');
         }
         
     }

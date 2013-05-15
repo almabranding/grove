@@ -1,9 +1,4 @@
-<section class="container-margin">
-<script>
-    var BGImageArray=new Array('<?php echo URL . 'public/images/ej0.jpg'; ?>');
-</script>
-<div class="preload"></div>
-<div id="body-background" class="" style="">
-    <img class="imgBG" src="<?php echo URL . 'public/images/ej0.jpg'; ?>" alt="Bg">
-</div>
-</section>
+
+    <?php foreach ($this->gallery as $value) { ?>
+    <div class="backgroundContainer" style="height:98%;background-image: url('<?php echo IMAGES . $this->page['id'].'/'.$value['img']; ?>');"></div>
+    <?php }?>
