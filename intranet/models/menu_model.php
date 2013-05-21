@@ -15,9 +15,13 @@ class Menu_Model extends Model {
             $b[$parent['id']]['sort']=true;
             $b[$parent['id']][0] = array(
                 array(
+                    "title" => 'Id',
+                    "width" => "5%",
+                ),
+                array(
                     "title" => $parent['name'],
-                    "width" => "100%",
-                    "colspan" => "5"
+                    "width" => "80%",
+                    "colspan" => "4"
                 )
             );
 
@@ -27,6 +31,7 @@ class Menu_Model extends Model {
                 $elem = $gsent->fetch();
                 $b[$parent['id']][] =
                 array(
+                    "id" => $elem['id'],
                     "name" => $elem['name']
                 );
             }
@@ -36,9 +41,11 @@ class Menu_Model extends Model {
 
     public function sort() { 
         $sort= array_diff($_POST['choices'], array('titleTable'));
+        $cont=0;
         foreach ($sort as $key => $value) {
+            $cont++;
             $data = array(
-                'orden' => $key
+                'orden' => $cont
             );
             $this->db->update('menu', $data, "`id` = '{$value}'");
         }

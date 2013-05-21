@@ -2,14 +2,15 @@
 var std = ({
     fontFamily: 'Din',
     color: '#7f7e82',
+    fontWeight: '500',
     letterSpacing: '0.3em',
-    fontSize: '11px',
+    fontSize: '13px',
 });
 var h2 = ({
     fontFamily: 'Din',
     color: '#333333',
     letterSpacing: '0.3em',
-    fontSize: '16px',
+    fontSize: '13px',
 });
 var h3 = ({
     fontFamily: 'Din',
@@ -32,6 +33,7 @@ var menuLink = ({
     color: '#7f7e82',
     letterSpacing: '0.3em',
     fontSize: '13px',
+    fontWeight: '500',
     hover: {
         color: '#2d2427',
         fontSize: '13px'
@@ -40,8 +42,13 @@ var menuLink = ({
 var menu = ({
     fontFamily: 'Din',
     color: '#ffffff',
+    fontWeight: '400',
     letterSpacing: '0.3em',
-    fontSize: '16px',
+    fontSize: '13px',
+    hover: {
+        color: '#2d2427',
+        fontSize: '13px'
+    }
 });
 
 $(window).load(function() {
@@ -65,4 +72,14 @@ function loadCufon() {
     Cufon.replace('.menuLink', menuLink);
     Cufon.replace('.menu', menu);
     Cufon.replace('.link', link);
+}
+function changeFoot(texto) {
+    $('#lemon').queue(function() {
+        $(this).clearQueue();
+        $(this).animate({'color': '#000000'}, {
+            complete: function() {
+                $(this).text(texto);
+                $(this).animate({'color': '#ffffff'});
+            }});
+    });
 }

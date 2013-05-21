@@ -30,7 +30,10 @@ class Page_Model extends Model {
             $menu[$value['id']]=$value['name'];
         }
         $obj->add_options($menu);
-
+        if($this->gettemplate($project['template'],'name')=='video'){
+            $form->add('label', 'label_vimeo', 'vimeo', 'Vimeo');
+            $form->add('text', 'vimeo', $project['vimeo'], array('autocomplete' => 'off','required'  =>  array('error', 'Video is required!')));
+        }
         $form->add('label', 'label_description', 'description', 'Description');
         $obj=$form->add('textarea', 'description', $project['description'], array('autocomplete' => 'off'));
 
@@ -99,39 +102,42 @@ class Page_Model extends Model {
     } 
     
     public function create() {
-        
+        $menu=($_POST['menu']!='')?$_POST['menu']:-1;
         $data = array(
             'name' => $_POST['name'],
             'template' => $_POST['template'],
-            'menu' => $_POST['menu'],
+            'menu' => $menu,
             'description' => $_POST['description'],
             'url' => filter_var(urlencode(strtolower($_POST['name'])), FILTER_SANITIZE_URL)
         );
         $page=$this->db->insert('page', $data);
+        if($_POST['menu']!='')$_POST['menu']=-1;
         $data = array(
             'name' => $_POST['name'],
-            'url' => strtolower($this->getTemplate($_POST['template'],'url').'/view/'.urlencode($_POST['name'])),
-            'parent' => $_POST['menu'],
+            'url' => strtolower($this->getTemplate($_POST['template'],'url').urlencode($_POST['name'])),
+            'parent' => $menu,
             'page' => $page
         );
-        if($_POST['menu']!='')$this->db->insert('menu', $data);
+        $this->db->insert('menu', $data);
     }
     public function edit($id){
+        $menu=($_POST['menu']!='')?$_POST['menu']:-1;
         $data = array(
             'name' => $_POST['name'],
             'template' => $_POST['template'],
             'description' => $_POST['description'],
             'content' => stripslashes($_POST['content']),
+            'vimeo' => $_POST['vimeo'],
             'url' => filter_var(urlencode(strtolower($_POST['name'])), FILTER_SANITIZE_URL),
-            'menu' => $_POST['menu']
+            'menu' => $menu
         );
         $this->db->update('page', $data, 
             "`id` = '{$id}'");
             
         $data = array(
             'name' => $_POST['name'],
-            'url' => strtolower($this->getTemplate($_POST['template'],'url').'/view/'.urlencode($_POST['name'])),
-            'parent' => $_POST['menu']
+            'url' => strtolower($this->getTemplate($_POST['template'],'url').urlencode($_POST['name'])),
+            'parent' => $menu
         );
         $this->db->update('menu', $data, 
             "`page` = '{$id}'");

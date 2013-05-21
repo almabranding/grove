@@ -3,6 +3,7 @@
 /* Frame */
 .frame {
 	height: 95%;
+        margin-top: 1%;
 	overflow: hidden;
         position: relative;
 }
@@ -27,7 +28,7 @@
 
 /* Scrollbar */
 .scrollbar {
-	margin: 0 0 1em 0;
+	margin: 20px 0 0;
 	height: 2px;
 	background: #ccc;
 	line-height: 0;

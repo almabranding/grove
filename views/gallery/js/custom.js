@@ -1,6 +1,7 @@
 var sly;
 var time = 1500;
 var item = 0;
+var isShow=1;
 var carouselPos = 0;
 var $frame = $('#centered');
 var $wrap = $frame.parent();
@@ -35,7 +36,18 @@ $(window).load(function() {
     sly = new Sly($frame, $options).init();
     resizeContainer();
     $('#descDown').on('click', function() {
+        isShow=0;
+        $('.descUpDown').toggle();
+        $('#descMenu').removeClass('navBoxShow', 500);
+    });
+    $('#descUp').on('click', function() {
+        isShow=1;
+        $('.descUpDown').toggle();
+        $('#descMenu').addClass('navBoxShow', 500);
+    });
+    $('#descClose').on('click', function() {
         $('.scrollbar').show();
+        $('#descNav').removeClass('navBoxShow');
         $('#descMenu').removeClass('navBoxShow', 500);
         sly.set($options);
         sly.toCenter(carouselPos, false);
@@ -43,6 +55,7 @@ $(window).load(function() {
         {
             left: 0,
             width: 400,
+            'z-index':10
         },
         {
             duration: time,
@@ -74,7 +87,8 @@ $(window).load(function() {
         $('#fadeWhite').fadeIn(function() {
             $('.selected').removeClass('selected').removeAttr('style').find(".backgroundContainer").css({
                 left: 0,
-                width: 400
+                width: 400,
+                'z-index':10
             });
             selectImage($('.bgContainer').eq(carouselPos));
         });
@@ -82,7 +96,8 @@ $(window).load(function() {
     $(window).on('resize', function() {
         resizeContainer();
     });
-    $('.bgContainer').on('mouseenter', function() {
+    $('.bgContainer').not('.selected').on('mouseenter', function() {
+        $('.bgDesc').removeClass('bgDescShow', 500);
         var desc = $(this).find('.bgDesc');
         desc.queue(function() {
             $(this).clearQueue();
@@ -118,13 +133,13 @@ function selectImage(li) {
         margin: 0,
         'z-index': 1
     });
-    li.find(".body-background").ezBgResize();
     li.addClass('selected');
     var offset = li.offset();
+    li.find(".backgroundContainer").css('z-index',14);
     li.find(".backgroundContainer").animate(
     {
         left: "-" + (offset.left),
-        width: $(window).width() - 40,
+        width: $(window).width() - 40
     },
     {
         duration: time,
@@ -133,8 +148,9 @@ function selectImage(li) {
         },
         complete: function() {
             sly.reload();
+            $('#descNav').addClass('navBoxShow', 500);
             $('.scrollbar').hide();
-            $('#descMenu').addClass('navBoxShow', 500);
+            if(isShow) $('#descMenu').addClass('navBoxShow', 500);
             $('.preload').hide();
             $('#fadeWhite').fadeOut();
             sly.set($optionsNull);

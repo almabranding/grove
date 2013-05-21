@@ -1,6 +1,6 @@
 <form id="mainform" action="">
     <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table" class='<?php echo ($this->list['sort'])?'sortable':'' ?>'>      
-        <?php
+        <?php 
         foreach ($this->list as $k => $w) {
             $alternate = (($k % 2) == 0) ? 'alternate-row' : '';
             $id=($k == 0)?'titleTable':$w['id'];

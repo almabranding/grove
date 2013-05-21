@@ -18,9 +18,6 @@
     <nav class="barRight">
         <ul>
             <li>
-                <span class="menu">Disclaimer</span>
-            </li>
-            <li>
                 <span class="menu">Contact</span>
             </li>
             <li>
@@ -28,6 +25,16 @@
             </li>
             <li>
                 <span class="menu">Twitter</span>
+            </li>
+            <li>
+                <span class="menu">Disclaimer</span>
+            </li>
+            
+            <li>
+               <a href='http://www.lemonyellow.com/' target="_blank" onmouseover="changeFoot('LEMON YELLOW');" onmouseout="changeFoot('SITE CREDITS');"><span id="lemon" class="menu">SITE CREDITS</span></a>
+            </li>
+            <li>
+                <a href='http://www.terragroup.com/about' target='_blank'>&copy;TERRA GROUP 2013</a>
             </li>
             <li>
                 <img alt="Terra Group" src="<?php echo URL;?>/public/images/terraLogo.png" />
@@ -43,7 +50,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
     <script src="<?php echo URL;?>public/js/custom.js"></script>
     <script src="<?php echo URL;?>public/js/cufon-yui.js"></script>
-    <script src="<?php echo URL;?>public/js/DIN_500.font.js"></script>
+    <script src="<?php echo URL;?>public/js/DIN_500-DIN_400.font.js"></script>
 <?php
     if (isset($this->js)) 
         foreach ($this->js as $js)

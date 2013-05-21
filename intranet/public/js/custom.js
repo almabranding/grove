@@ -1,4 +1,4 @@
-var ROOT='/intranet/'
+var ROOT='/grove/intranet/'
 window.onload = function() {
     //CKEDITOR.replace( 'ckeditor' );
     tinyMCE.init({

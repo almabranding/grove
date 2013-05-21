@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="<?php echo URL; ?>public/css/style.css" />
     <link rel="stylesheet" href="<?php echo URL; ?>public/css/zebra_form.css" />
-    <link rel="stylesheet" href="<?php echo URL; ?>public/css/jquery.Jcrop.css" />
+    <link rel="stylesheet" href="<?php echo URL; ?>public/css/jquery.Jcrop.custom.css" />
     <link rel="stylesheet" href="<?php echo URL; ?>public/css/HTML5Upload.css" />
     <link rel="stylesheet" href="<?php echo URL; ?>public/css/file-upload.css" />
    <!-- <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/sunny/jquery-ui.css" />-->

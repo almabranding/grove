@@ -19,15 +19,17 @@
     padding: 0;
     border: none;
 }
+.menuLink{
+    text-transform: uppercase;
+}
 #container {
     height: 98%;
     margin-left: auto;
     margin-right: auto;
     position: relative;
     width: auto;
-    top: 20px;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 html, body {
@@ -89,7 +91,6 @@ ol,ul{
 #wrapper {    
     position: relative;
     min-height: 100%;
-    height: auto !important;
     height: 100%;
     margin: 0 auto;
     min-width: 100%;
@@ -111,7 +112,7 @@ footer nav li{
     vertical-align: middle;
     display: inline-block;
     font-size: 12px;
-    margin: 0 15px;
+    margin: 0 8px;
     text-transform: uppercase;
     cursor: pointer;
 }
@@ -128,7 +129,7 @@ footer nav li{
     float: left;
 }
 .barLeft li{
-    margin: 0 0 0 13px;
+    margin: 0 0 0 9px;
     text-align: left;
     width: 103px;
 }
@@ -142,6 +143,12 @@ footer nav li{
     cursor: pointer;
     z-index: 1001;
     display: none;
+}
+h3{
+    margin: 0 0 10px 0;
+}
+p{
+    margin: 5px 0;
 }
 #floater {
     float: left;
@@ -221,6 +228,22 @@ label {
     padding: 20px;
     width: 65%;
 }
+#video{
+    position: relative;
+    width: auto;
+    height: 100%;
+}
+#map{
+    padding: 20px;
+    position: relative;
+    width: auto;
+    height: 95%;
+}
+#map>div{
+    margin: auto;
+    width: 100% !important;
+    height: 100% !important;
+}
 #pageDesc{
     margin: auto auto 15px;
     text-align: left;
@@ -261,14 +284,14 @@ label {
     z-index: 1000 !important;
 }
 .backgroundContainer{
-    
     background-size: cover;
-    float: left;
-    height: 100%;
     overflow: hidden;
     position: relative;
-    width: 100%;
     z-index: 10;
+    height: 100%;
+    margin: 1% auto auto;
+    position: relative;
+    width: 96%;
     border-right: 20px solid #ffffff;
     border-left: 20px solid #ffffff;
 }
@@ -436,9 +459,8 @@ input[type="submit"]{
     float:left;
     width: 33%;
 }
-#menu li{
-    /*text-transform: uppercase;
-    display: none;*/
+.menu{
+    
 }
 .header_menu {
     color: #000000;
@@ -451,7 +473,7 @@ input[type="submit"]{
     cursor: pointer;
     display: inline;
     float: left;
-    margin: 8px 0 21px 24px;
+    margin: 8px 0 21px 20px;
     position: relative;
     text-align: left;
     width: 100px;
@@ -506,10 +528,10 @@ input[type="submit"]{
 }
 .container-margin{
     background: none repeat scroll 0 0 #EBEBEB;
-    height: auto;
-    margin: 0 20px;
+    height: 96%;
+    margin: 2% auto auto;
     position: relative;
-    z-index: -4;
+    width: 96%;
 }
 .container-margin #body-background{
     position: relative !important;
@@ -532,6 +554,7 @@ input[type="submit"]{
     position: absolute;
     text-align: left;
     width: 100%;
+    z-index: 12;
 }
 .bgDescShow{
    height: 50px; 
@@ -542,7 +565,7 @@ input[type="submit"]{
     height: 100%;
     position: absolute;
     width: 100%;
-    z-index: 1000;
+    z-index: 19;
     display: none;
 }
 #descMenu{
@@ -566,7 +589,7 @@ input[type="submit"]{
 }
 #descInfo{
     float: left;
-    margin: 15px 0 15px 20px;
+    margin: 15px 0 15px 21px;
     max-width: 1000px;
     position: relative;
     text-align: left;
@@ -590,13 +613,15 @@ input[type="submit"]{
 #replace{
     display: none;
 }
-#descNav{
+#descNav {
+    bottom: 5px;
+    display: none;
     float: right;
     margin: 0;
+    min-height: auto !important;
     position: absolute;
-    right: 13px;
-    top: 15px;
-    width: 38px;
+    right: 20px;
+    width: 26px;
     z-index: 100;
 }
 #descNav >div{
@@ -608,8 +633,12 @@ input[type="submit"]{
 #descNav >div:hover{
     opacity: 0.7;
 }
-.descUp {
+#descUp {
+    display:none;
     background: url("../images/navBtns.jpg") no-repeat scroll 0 -84px transparent !important;
+}
+#descClose {
+    background: url("../images/navBtns.jpg") no-repeat scroll 0 -110px transparent !important;
 }
 #descDown{
     background: url("../images/navBtns.jpg") no-repeat scroll 0 0px transparent;
@@ -630,6 +659,7 @@ input[type="submit"]{
     opacity: 0;
 }
 .navBoxShow{
+    display: inherit !important;
     min-height: 118px;
     opacity: 1 !important;
     height: auto !important;
@@ -649,4 +679,61 @@ input[type="submit"]{
 #selectMenu #menu{
     z-index: 10;
     position: absolute;
+}
+#controlsMaps {
+    height: auto !important;
+    left: auto !important;
+    right: 67px !important;
+    top: 0 !important;
+    width: auto !important;
+}
+#controlsMaps div{
+    float:left!important;
+    opacity: 1!important;
+    top:10px!important;
+}
+.zoomMas, #_zi_icon {
+    background: url("../images/navBtns.jpg") no-repeat scroll 0 -84px transparent !important;
+    left: auto !important;
+    right: 29px !important;
+}
+.zoomMenos, #_zo_icon {
+    background: url("../images/navBtns.jpg") no-repeat scroll 0 0 transparent !important;
+}
+.mapZoom, #_zi_icon, #_zo_icon {
+    cursor: pointer;
+    height: 22px !important;
+    position: absolute !important;
+    width: 22px !important;
+    z-index: 100 !important;
+}
+#download{
+    background: url("../images/navBtns.jpg") no-repeat scroll 0 -135px transparent !important;
+    height: 22px;
+    position: absolute;
+    right: 115px;
+    top: 40px;
+    width: 92px;
+    z-index: 100;
+}
+#map div{
+    background-color: transparent !important;
+}
+#sectionImage{
+    width: 30%;
+    height: 100%;
+    float:left;
+    background-size: cover !important;
+}
+#sectionText{
+    background: none repeat scroll 0 0 #EBEBEB;
+    float: left;
+    height: 100%;
+    margin-left: 2%;
+    text-align: left;
+    width: 66%;
+    overflow: auto;
+}
+#sectionText > p{
+    padding: 5px 15px;
 }

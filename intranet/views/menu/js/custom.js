@@ -22,6 +22,5 @@ $(function() {
 });
 function updateListItem(sortable) {
     var sorted = sortable.sortable( "toArray" );
-    sorted = array_diff($arr, array("yellow", "red"));
     $.post(ROOT+'menu/sort',{ 'choices[]': sorted}).done(function(data) {});
   }

@@ -4,7 +4,6 @@
         <div class="mousearea"></div>
     </div>
 </div>
-<div id="fadeWhite"></div>
 <div id="centered" class="frame" style="overflow: hidden;">
     <ul  class="bgList" style="height: 100%;width: 10000px">
         <?php foreach ($this->gallery as $value) { ?>
@@ -19,16 +18,19 @@
             </li>
         <?php } ?>
     </ul>
+    <div id="fadeWhite"></div>
+</div>
+<div id="descNav">
+    <div id="descClose"></div>
+    <div id="descUp" class="descUpDown"></div>
+    <div id="descDown" class="descUpDown"></div>
+    <div id="descPrev" class="bgControl"></div>
+    <div id="descNext" class="bgControl"></div>
 </div>
 <div id="descMenu" class="navBox">
     <div id="descInfo" class="  " style="">
         <?php echo $this->page['content'];?>  
    </div>
-    <div id="descNav">
-        <div id="descDown"></div>
-        <div id="descPrev" class="bgControl"></div>
-        <div id="descNext" class="bgControl"></div>
-    </div>
 </div>
 <div ></div>
 
