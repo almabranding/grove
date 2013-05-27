@@ -52,12 +52,13 @@ var menu = ({
 });
 
 $(window).load(function() {
-    $('#selectMenu').on('mouseenter', function() {
+    $('.barLeft').on('mouseenter', function() {
         $('#menuprimary').queue(function() {
             $(this).clearQueue();
             $(this).addClass('navBoxShow', 500);
         });
-    }).on('mouseleave', function() {
+    });
+    $('#menuprimary').on('mouseleave', function() {
         $('#menuprimary').queue(function() {
             $(this).clearQueue();
             $(this).removeClass('navBoxShow', 500);
@@ -78,8 +79,9 @@ function changeFoot(texto) {
         $(this).clearQueue();
         $(this).animate({'color': '#000000'}, {
             complete: function() {
-                $(this).text(texto);
-                $(this).animate({'color': '#ffffff'});
+                $(this).html(texto);
+                $(this).animate({'color': '#ffffff'});   
+                Cufon.replace('#lemon', menu);
             }});
     });
 }

@@ -18,12 +18,12 @@ class Image extends Controller {
     public function edit($id) 
     {
         $this->model->edit($id);
-        header('location: ' . URL . 'image/view/'.$id);  
+        header('location: ' . URL .LANG . '/image/view/'.$id);  
     }
     public function delete($page,$id) 
     {
         $this->model->delete($id);
-        header('location: ' . URL . 'page/view/'.$page);
+        header('location: ' . URL .LANG. '/page/view/'.$page);
     }
 
 }

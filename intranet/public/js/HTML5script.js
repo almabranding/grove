@@ -1,5 +1,6 @@
 $(function(){
 	var URL='/grove/intranet/';
+        var LANG='/NULL/';
 	var dropbox = $('#dropbox'),
         message = $('.message', dropbox);
         var project = $('#project').val();
@@ -11,7 +12,7 @@ $(function(){
 		paramname:'pic',
 		maxfiles: 50,
                 maxfilesize: 5,
-		url: URL+'uploadFile/upload/'+project,
+		url: URL+LANG+'uploadFile/upload/'+project,
 		
 		uploadFinished:function(i,file,response){
 			$.data(file).addClass('done');

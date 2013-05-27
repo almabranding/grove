@@ -10,10 +10,10 @@
             <li class="bgContainer">
                 <div class="backgroundContainer" style="background-image: url('<?php echo IMAGES . $this->page['id'].'/'.$value['img']; ?>');"></div>
                 <div class="galleryThumb" class="">
-                    <img class="imgBG" src="<?php echo IMAGES . $this->page['id'].'/'.$value['img']; ?>" alt="<?php echo $value['caption']; ?>">
+                    <img class="imgBG" src="<?php echo IMAGES . $this->page['id'].'/'.$value['img']; ?>" alt="<?php echo $value['caption_'.LANG]; ?>">
                 </div>
                 <div class="bgDesc">
-                    <h2><?php echo $value['description'];?></h2>  
+                    <h2 class="caption"><?php echo $value['caption_'.LANG];?></h2>
                 </div>
             </li>
         <?php } ?>
@@ -29,7 +29,8 @@
 </div>
 <div id="descMenu" class="navBox">
     <div id="descInfo" class="  " style="">
-        <?php echo $this->page['content'];?>  
+        <h3 id="descTitle"></h3>
+        <?php echo $this->page['content_'.LANG];?>  
    </div>
 </div>
 <div ></div>

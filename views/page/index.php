@@ -8,6 +8,6 @@
     </div>
 </div>
 </section>
-<section id="descInfoFull">
-    <?php echo $this->page['content'];?>  
+<section id="descInfoRight">
+    <?php echo $this->page['content_'.LANG];?>  
 </section>

@@ -45,31 +45,16 @@ $(window).load(function() {
         $('.descUpDown').toggle();
         $('#descMenu').addClass('navBoxShow', 500);
     });
-    $('#descClose').on('click', function() {
-        $('.scrollbar').show();
-        $('#descNav').removeClass('navBoxShow');
+    $('#descMenu').on('click', function() {
+        isShow=0;
+        $('.descUpDown').toggle();
         $('#descMenu').removeClass('navBoxShow', 500);
-        sly.set($options);
-        sly.toCenter(carouselPos, false);
-        $('.bgContainer.selected').find(".backgroundContainer").animate(
-        {
-            left: 0,
-            width: 400,
-            'z-index':10
-        },
-        {
-            duration: time,
-            step: function(now, fx) {
-                sly.reload();
-            },
-            complete: function() {
-                $('.bgContainer.selected').removeClass('selected').removeAttr('style');
-                sly.reload();
-                sly.toCenter(carouselPos, false);
-
-            }
-        });
-
+    });
+    $('#descClose').on('click', function() {
+        returnGallery();
+    });
+    $('.backgroundContainer').on('click', function() {
+        returnGallery();
     });
     $('.bgControl').on('click', function() {
         var max = $('.bgContainer').index();
@@ -110,7 +95,7 @@ $(window).load(function() {
             $(this).removeClass('bgDescShow', 500);
         });
     });
-    $('.bgContainer').on('click', function() {
+    $('.bgContainer').not('.selected').on('click', function() {
         selectImage($(this));
 
     });
@@ -124,6 +109,7 @@ function resizeContainer() {
 }
 
 function selectImage(li) {
+    if(li.hasClass('selected')) return false;
     carouselPos = li.index();
     $('.bgList').css({
         position: 'absolute',
@@ -135,6 +121,8 @@ function selectImage(li) {
     });
     li.addClass('selected');
     var offset = li.offset();
+    $('#descTitle').html(li.find('.caption').text());
+    loadCufon();
     li.find(".backgroundContainer").css('z-index',14);
     li.find(".backgroundContainer").animate(
     {
@@ -156,4 +144,31 @@ function selectImage(li) {
             sly.set($optionsNull);
         }
     });
+}
+function returnGallery(){
+    
+        $('.scrollbar').show();
+        $('#descNav').removeClass('navBoxShow');
+        $('#descMenu').removeClass('navBoxShow', 500);
+        sly.set($options);
+        sly.toCenter(carouselPos, false);
+        $('.bgContainer.selected').find(".backgroundContainer").animate(
+        {
+            left: 0,
+            width: 400,
+            'z-index':10
+        },
+        {
+            duration: time,
+            step: function(now, fx) {
+                sly.reload();
+            },
+            complete: function() {
+                $('.bgContainer.selected').removeClass('selected').removeAttr('style');
+                sly.reload();
+                sly.toCenter(carouselPos, false);
+
+            }
+        });
+
 }

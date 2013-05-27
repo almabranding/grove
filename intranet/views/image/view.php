@@ -238,7 +238,7 @@ function updateListItem(itemId, newStatus) {
         <input type="hidden" id="" name="id" value="<?php echo $this->id;?>"/>
         <input type="hidden" id="" name="filename" value="<?php echo $value['img'];?>"/>
         <input type="hidden" id="" name="filefolder" value="<?php echo $value['page'];?>"/>
-        <input type="submit" value="Crop Image" class="btn" /><input type="button" value="Back" class="btn" onclick="location.href='<?php echo URL;?>page/view/<?php echo $value['page'];?>';" />
+        <input type="submit" value="Crop Image" class="btn" /><input type="button" value="Back" class="btn" onclick="location.href='<?php echo URL.LANG;?>/page/view/<?php echo $value['page'];?>';" />
 </form>
   <?php   } ?>
 <div class="clearfix"></div>

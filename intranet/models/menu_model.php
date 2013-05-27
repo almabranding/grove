@@ -31,7 +31,7 @@ class Menu_Model extends Model {
                 $elem = $gsent->fetch();
                 $b[$parent['id']][] =
                 array(
-                    "id" => $elem['id'],
+                    "id" => $value['id'],
                     "name" => $elem['name']
                 );
             }
@@ -47,6 +47,7 @@ class Menu_Model extends Model {
             $data = array(
                 'orden' => $cont
             );
+            echo $value;var_dump($data);
             $this->db->update('menu', $data, "`id` = '{$value}'");
         }
         exit;

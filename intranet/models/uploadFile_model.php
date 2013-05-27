@@ -67,7 +67,9 @@ class uploadFile_Model extends Model {
         $this->db->insert('images', array(
             'img'       => $img['file'],
             'thumb'     => $img['thumb'],
-            'caption'   => $img['name'],
+            'caption_EN'   => $img['name'],
+            'caption_ES'   => $img['name'],
+            'caption_PT'   => $img['name'],
             'video'     => $img['video'],
             'name'      => $img['name'],
             'page'      => $page,

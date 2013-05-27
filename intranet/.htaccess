@@ -29,4 +29,4 @@ RewriteRule ^(.*)$ /grove/intranet/index.php?url=$1 [QSA,L]
 #RewriteRule ^(.+)/$ ?page=$1&%{QUERY_STRING} [L]
 
 #AddType application/x-httpd-php .css
-AddType application/x-httpd-php .html
+#AddType application/x-httpd-php .html

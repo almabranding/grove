@@ -21,17 +21,17 @@ class Page extends Controller {
     public function create() 
     {
         $this->model->create();
-        header('location: ' . URL . 'page');
+        header('location: ' . URL . LANG . '/page');
     }
     public function edit($id) 
     {
         $this->model->edit($id);
-        header('location: ' . URL . 'page');
+        header('location: ' . URL . LANG . '/page');
     }
     public function delete($id) 
     {
         $this->model->delete($id);
-        header('location: ' . URL . 'page');
+        header('location: ' . URL . LANG .  '/page');
     }
     public function sort() 
     {

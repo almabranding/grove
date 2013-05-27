@@ -4,7 +4,7 @@ class Image_Model extends Model {
         parent::__construct();
     }  
     public function form($type='add',$id='null') {
-        $action=($type=='add')?URL.'image/create':URL.'image/edit/'.$id;
+        $action=($type=='add')?URL.LANG.'/image/create':URL.LANG.'/image/edit/'.$id;
         if ($type=='edit')
             foreach ($this->getInfo($id) as $value);
         $group[0]='None';
@@ -18,7 +18,7 @@ class Image_Model extends Model {
         $obj = $form->add('text', 'name', $value['name'], array('autocomplete' => 'off','required'  =>  array('error', 'Name is required!')));
         
         $form->add('label', 'label_caption', 'caption', 'Caption');
-        $obj = $form->add('text', 'caption', $value['caption'], array('autocomplete' => 'off','required'  =>  array('error', 'Name is required!')));
+        $obj = $form->add('text', 'caption', $value['caption_'.LANG], array('autocomplete' => 'off','required'  =>  array('error', 'Name is required!')));
         
         $form->add('label', 'label_description', 'description', 'Description');
         $obj=$form->add('textarea', 'description', $value['description'], array('autocomplete' => 'off'));
@@ -47,7 +47,7 @@ class Image_Model extends Model {
             ));
         }
         
-        $form->add('label', 'label_replace', 'replace', 'Replace text');
+        /*$form->add('label', 'label_replace', 'replace', 'Replace text');
         $obj = $form->add('checkboxes', 'replace',
             array(
                 '1' => ''
@@ -61,11 +61,13 @@ class Image_Model extends Model {
                 'checked' => 'checked'
             ));
         }
+        */
+        
         if($value['video']){
             $form->add('label', 'label_vimeo', 'vimeo', 'Vimeo ID');
             $obj = $form->add('text', 'vimeo', $value['vimeo'], array('autocomplete' => 'off'));
         }
-        $obj=$form->add('label', 'label_info', 'info', 'Information');
+        /*$obj=$form->add('label', 'label_info', 'info', 'Information');
         $obj->set_attributes(array(
                 'style'    => 'float:none',
             ));
@@ -73,6 +75,7 @@ class Image_Model extends Model {
         $obj->set_attributes(array(
             'class'    => 'wysiwyg',
         ));
+         */
         $form->add('submit', '_btnsubmit', 'Submit');
         $form->validate();
         return $form;
@@ -88,7 +91,7 @@ class Image_Model extends Model {
     public function edit($id){
         $data = array(
             'name'      => $_POST['name'],
-            'caption'   => $_POST['caption'],
+            'caption_'.LANG => $_POST['caption'],
             'description'=>$_POST['description'],
             'vimeo'     => $_POST['vimeo'],
             'group'     => $_POST['group'],

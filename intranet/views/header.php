@@ -57,8 +57,8 @@
     </div>    
     <nav class="header_menu" id="sidebarnav">
         <ul>
-            <li><a href="<?php echo URL; ?>page">pages</a></li>
-            <li><a href="<?php echo URL; ?>menu">menus</a></li>
+            <li><a href="<?php echo URL.LANG; ?>/page">pages</a></li>
+            <li><a href="<?php echo URL.LANG; ?>/menu">menus</a></li>
         </ul>
     </nav>
     <div class="header_shadow"></div>

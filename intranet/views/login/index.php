@@ -21,7 +21,7 @@
    </div>
     <div id="login-box">
         <H2>Access</H2>
-        <form method="post" action="<?php echo URL;?>login/run" />
+        <form method="post" action="<?php echo URL.LANG;?>/login/run" />
         <div id="login-box-name" style="margin-top:20px;">User:</div><div id="login-box-field" style="margin-top:20px;"><input name="login" class="form-login" title="Username" value="" size="30" maxlength="2048" /></div>
         <div id="login-box-name">Password:</div><div id="login-box-field"><input name="password" type="password" class="form-login" title="Password" value="" size="30" maxlength="2048" /></div>
         <br />

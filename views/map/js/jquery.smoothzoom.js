@@ -41,7 +41,7 @@
 			button_COLOR			: 'none',
 			button_BG_COLOR			: 'none',
 			button_BG_TRANSPARENCY	: 55,
-			button_ICON_IMAGE		: '../../public/images/iconsMap.png',
+			button_ICON_IMAGE		: '/grove/public/images/iconsMap.png',
 			button_AUTO_HIDE		: 'NO',
 			button_AUTO_HIDE_DELAY	: 1,
 			button_ALIGN			: 'bottom right',

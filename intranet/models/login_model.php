@@ -24,9 +24,9 @@ class Login_Model extends Model
             Session::set('role', $data['role']);
             Session::set('loggedIn', true);
             Session::set('userid', $data['userid']);
-            header('location: '.URL.'page');
+            header('location: '.URL.LANG.'/page');
         } else {
-            header('location: '.URL.'page');
+            header('location: '.URL.LANG.'/page');
         }
         
     }

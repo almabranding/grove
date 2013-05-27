@@ -17,7 +17,6 @@
     <meta name="author" content="" />
     <!--<link rel="shortcut icon" href="../favicon.ico" Content-type="image/x-icon" />-->
     <link rel="stylesheet" href="<?php echo URL; ?>public/css/style.css" />
-    <link rel="stylesheet" href="<?php echo URL; ?>public/css/elastislide.css" />
     <?php
     if (isset($this->css)) 
         foreach ($this->css as $css)

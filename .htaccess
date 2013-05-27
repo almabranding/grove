@@ -21,4 +21,4 @@ Header unset ETag
 FileETag None
 </FilesMatch>
 RewriteRule ^(.*)$ grove/index.php?url=$1 [QSA,L]
-AddType application/x-httpd-php .html
+#AddType application/x-httpd-php .html

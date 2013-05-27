@@ -4,7 +4,7 @@ class Page_Model extends Model {
         parent::__construct();
     }
     public function form($type='add',$id='null') {
-        $action=($type=='add')?URL.'page/create':URL.'page/edit/'.$id;
+        $action=($type=='add')?URL.LANG.'/page/create':URL.LANG.'/page/edit/'.$id;
         if ($type=='edit')
             foreach ($this->getInfo($id) as $project);
         $atributes=array(
@@ -42,7 +42,7 @@ class Page_Model extends Model {
             $obj->set_attributes(array(
                 'style'    => 'float:none',
             ));
-            $obj=$form->add('textarea', 'content', htmlentities($project['content']), array('autocomplete' => 'off'));
+            $obj=$form->add('textarea', 'content', htmlentities($project['content_'.LANG]), array('autocomplete' => 'off'));
             $obj->set_attributes(array(
                 'class'    => 'wysiwyg',
             ));
@@ -71,22 +71,22 @@ class Page_Model extends Model {
                "title"  =>"Menu",
                "width"  =>"20%"
            ),array(
-               "title"  =>"Description",
+               "title"  =>"URL",
                "width"  =>"20%"
            ),array(
                "title"  =>"Options",
                "width"  =>"10%"
-           ));
-                     
+           ));       
         foreach($lista as $key => $value) {
-            $b[]=
+            $url=TEMPDIR.LANG.'/'.strtolower($this->getTemplate($value['template'],'url').$value['url']);
+            $b[]=   
             array(
                 "id"  =>$value['id'],
                 "name"  =>$value['name'],
                 "template"  =>$this->gettemplate($value['template'],'name'),
                 "Menu"  =>$this->getMenu($value['menu'],'name'),
-                "Description"  =>$value['description'],
-                "Options"  =>'<a href="'.URL.'page/view/'.$value['id'].'"><div class="edit"></div></a><a href="'.URL.'page/delete/'.$value['id'].'"><div class="delete"></div></a>'
+                "URL"  =>'<a target="_blank" href="'.$url.'">'.$url.'</a>',
+                "Options"  =>'<a href="'.URL.LANG.'/page/view/'.$value['id'].'"><div class="edit"></div></a><a href="'.URL.LANG.'/page/delete/'.$value['id'].'"><div class="delete"></div></a>'
             );
         }
         return $b;
@@ -126,7 +126,7 @@ class Page_Model extends Model {
             'name' => $_POST['name'],
             'template' => $_POST['template'],
             'description' => $_POST['description'],
-            'content' => stripslashes($_POST['content']),
+            'content_'.LANG => stripslashes($_POST['content']),
             'vimeo' => $_POST['vimeo'],
             'url' => filter_var(urlencode(strtolower($_POST['name'])), FILTER_SANITIZE_URL),
             'menu' => $menu

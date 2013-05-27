@@ -17,24 +17,24 @@
     </nav>
     <nav class="barRight">
         <ul>
-            <li>
-                <span class="menu">Contact</span>
+            <li is="langChage">
+                <span class="menu">English</span><div class="langArrow"></div>
             </li>
             <li>
-                <span class="menu">Facebook</span>
+                <a href='<?php echo URL.LANG.'/page/section/contact';?>'><span class="menu">Contact</span></a>
             </li>
             <li>
-                <span class="menu">Twitter</span>
+                <span class="menu">Connect</span>
             </li>
             <li>
-                <span class="menu">Disclaimer</span>
+                <a href='<?php echo URL.LANG.'/page/section/disclaimer';?>'><span class="menu">Disclaimer</span></a>
             </li>
             
             <li>
                <a href='http://www.lemonyellow.com/' target="_blank" onmouseover="changeFoot('LEMON YELLOW');" onmouseout="changeFoot('SITE CREDITS');"><span id="lemon" class="menu">SITE CREDITS</span></a>
             </li>
             <li>
-                <a href='http://www.terragroup.com/about' target='_blank'>&copy;TERRA GROUP 2013</a>
+                <a href='http://www.terragroup.com/about' target='_blank'><span class="menu">&copy;TERRA GROUP 2013</span></a>
             </li>
             <li>
                 <img alt="Terra Group" src="<?php echo URL;?>/public/images/terraLogo.png" />
