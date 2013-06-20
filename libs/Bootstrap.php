@@ -25,7 +25,7 @@ class Bootstrap {
         Session::init();
         Session::set('lang','en');
         require LIBS. $this->_ZebraForm;
-
+           
         // Serve from the cache if it is the same age or younger than the last 
         // modification time of the included file (includes/$reqfilename)
         //$this->loadCache();
@@ -52,12 +52,12 @@ class Bootstrap {
         if (file_exists($cachefile)&& (time() - $cachetime< filemtime($cachefile))) {  
 
 
-           //include($cachefile);
+           include($cachefile);
 
            
 
 
-           //exit;
+           exit;
         }
 
 
@@ -121,6 +121,11 @@ class Bootstrap {
             Session::set('lang','EN');
             define('LANG',Session::get('lang'));
         }
+        $rute='';
+        foreach($this->_url as $value){
+            $rute.='/'.$value;
+        }
+        define('RUTE',$rute);
     }
     private function _getCache()
     {

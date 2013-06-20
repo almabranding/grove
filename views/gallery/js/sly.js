@@ -9,6 +9,7 @@
 	'use strict';
 
 	// Plugin names
+        
 	var pluginName = 'sly';
 	var className  = 'Sly';
 	var namespace  = pluginName;
@@ -1235,7 +1236,7 @@
 			if (dragging.init) {
 				return;
 			}
-
+                        
 			var isTouch = event.type === 'touchstart';
 			var source = event.data.source;
 			var isSlidee = source === 'slidee';
@@ -1267,7 +1268,7 @@
 			dragging.history = [0, 0, 0, 0];
 			dragging.pathMin = isSlidee ? -dragging.initLoc : -hPos.cur;
 			dragging.pathMax = isSlidee ? document[o.horizontal ? 'width' : 'height'] - dragging.initLoc : hPos.end - hPos.cur;
-
+                        
 			// Add dragging class
 			(isSlidee ? $slidee : $handle).addClass(o.draggedClass);
 
@@ -1331,6 +1332,9 @@
 
 			// Cleanup and trigger :moveEnd event on release
 			if (dragging.released) {
+                                if(Math.abs(dragging.path)==0){
+                                        self.activate($(event.target).parent().index());                                
+                                }
 				clearInterval(historyID);
 				$doc.off(dragging.touch ? dragTouchEvents : dragMouseEvents, dragHandler);
 				(dragging.slidee ? $slidee : $handle).removeClass(o.draggedClass);

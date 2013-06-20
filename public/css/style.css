@@ -23,13 +23,12 @@
     text-transform: uppercase;
 }
 #container {
-    height: 98%;
+    height: 94%;
     margin-left: auto;
     margin-right: auto;
     position: relative;
     width: auto;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow: auto;
 }
 
 html, body {
@@ -100,7 +99,7 @@ footer{
     bottom: 0;
     position: absolute;
     width: 100%;
-    z-index: 10;
+    z-index: 19;
 }
 footer nav{
     color: #FFFFFF;
@@ -111,7 +110,6 @@ footer nav{
 footer nav li{
     vertical-align: middle;
     display: inline-block;
-    font-size: 12px;
     margin: 0 8px;
     text-transform: uppercase;
     cursor: pointer;
@@ -131,7 +129,7 @@ footer nav li{
 .barLeft li{
     margin: 0 0 0 9px;
     text-align: left;
-    width: 103px;
+    width: auto;
 }
 .preload{
    background: url("../images/preload.gif") no-repeat scroll 0 0px transparent;
@@ -190,25 +188,25 @@ fieldset{
     z-index: 200;
 }
 input[type="text"], input[type="password"] {
-    border: 1px solid #ACACAC;
-    border-radius: 4px 4px 4px 4px;
-    color: #555555;
-    display: inline-block;
+    background: none repeat scroll 0 0 transparent;
+    border-bottom: 1px solid #999999 !important;
+    color: #777777;
+    display: inline;
     font-family: HelveticaNeue;
     font-size: 14px;
-    height: 20px;
-    line-height: 20px;
-    padding: 4px 0px;
-    vertical-align: middle;
+    height: 18px;
+    line-height: 13px;
+    padding: 12px 0 0;
     width: 200px;
 }
 label {
-    display: block;
-    line-height: 18px;
-    margin: 0 10px 0 0;
-    padding: 3px 10px 0 0;
+    display: inline;
+    line-height: 20px;
+    margin: 0 7px 0 0;
+    padding: 6px 10px 0 0;
     position: relative;
     text-align: left;
+    vertical-align: bottom;
     width: 100px;
 }
 .btn {
@@ -222,11 +220,11 @@ label {
     text-align: center;
     width: 100px;
 }
-#page{
+#page {
     margin: 20px auto;
     max-width: 1150px;
     padding: 20px;
-    width: 65%;
+    width: 66%;
 }
 #video{
     position: relative;
@@ -234,10 +232,9 @@ label {
     height: 100%;
 }
 #map{
-    padding: 20px;
+    height: 100%;
     position: relative;
     width: auto;
-    height: 95%;
 }
 #map>div{
     margin: auto;
@@ -294,6 +291,15 @@ label {
     width: 96%;
     border-right: 20px solid #ffffff;
     border-left: 20px solid #ffffff;
+}
+.backgroundHome{
+    background-size: cover;
+    height: 100%;
+    margin: 17px 20px 0 20px;
+    overflow: hidden;
+    position: relative;
+    width: auto;
+    z-index: 10;
 }
 .galleryThumb {
     background: none repeat scroll 0 0 #FFFFFF;
@@ -359,7 +365,7 @@ label {
 input[type="text"],input[type="password"]{
     border:none;
     border-radius: 0px;
-    width: 200px;
+    width: auto;
 }
 input[type="submit"]{
     border:none;
@@ -459,8 +465,11 @@ input[type="submit"]{
     float:left;
     width: 33%;
 }
-.menu{
-    
+.menuBtn{
+    background: url("../images/navBtns.png") no-repeat scroll 0 -160px transparent !important;
+    height: 22px;
+    margin: auto;
+    width: 76px;
 }
 .header_menu {
     color: #000000;
@@ -527,10 +536,13 @@ input[type="submit"]{
     -ms-transform:translateZ(0px) translateX(0px) !important;
 }
 .container-margin{
-    background: none repeat scroll 0 0 #EBEBEB;
-    margin: 2% auto auto;
+    /*background: none repeat scroll 0 0 #EBEBEB;*/
+    margin: 1% 20px;
     position: relative;
-    width: 96%;
+    width: auto;
+}
+.bgGrey{
+   background: none repeat scroll 0 0 #EBEBEB; 
 }
 .container-margin #body-background{
     position: relative !important;
@@ -556,6 +568,21 @@ input[type="submit"]{
     z-index: 12;
     line-height: 5px;
 }
+.bgBigDesc {
+    background: none repeat scroll 0 0 #FFFFFF;
+    bottom: 0;
+    font-size: 20px;
+    height: 0;
+    left: 0;
+    line-height: 5px;
+    opacity: 0;
+    padding: 10px 24px;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    z-index: 19;
+    bottom: -1px;
+}
 .bgDescShow{
    height: auto; 
    opacity: 1;
@@ -574,7 +601,7 @@ input[type="submit"]{
     overflow: hidden;
     position: absolute;
     width: 100%;
-    z-index: 20;
+    z-index: 18;
 }
 #descMenu #menu{
     bottom: 0;
@@ -603,11 +630,15 @@ input[type="submit"]{
     max-width: 1150px;
 }
 #descInfoRight{
-    margin: auto;
+    margin: 0 20px;
     padding: 20px 0;
     position: relative;
     text-align: left;
-    width: 96%;
+    width: 60%;
+}
+#descInfoRight div{
+    margin-right: 6% !important;
+    width: auto !important;
 }
 .colsView{
      -moz-column-count: 2;
@@ -617,19 +648,20 @@ input[type="submit"]{
     column-count: 2;
     column-gap: 20px;
 }
+.backgroundContainer span{
+    display: none;
+}
 #replace{
     display: none;
 }
 #descNav {
-    bottom: 5px;
+    bottom: 38px;
     display: none;
     float: right;
     margin: 0;
-    min-height: auto !important;
-    position: absolute;
-    right: 20px;
+    right: 25px;
     width: 26px;
-    z-index: 100;
+    z-index: 100;;
 }
 #descNav >div{
     width: 22px;
@@ -641,20 +673,46 @@ input[type="submit"]{
     opacity: 0.7;
 }
 #descUp {
-    display:none;
-    background: url("../images/navBtns.jpg") no-repeat scroll 0 -84px transparent !important;
+    background: url("../images/navBtns.png") no-repeat scroll 0 -84px transparent !important;
+    bottom: 69px;
+    display: none !important;
+    position: absolute;
+    right: 32px;
+    z-index: 100;
 }
 #descClose {
-    background: url("../images/navBtns.jpg") no-repeat scroll 0 -110px transparent !important;
+    background: url("../images/navBtns.png") no-repeat scroll 0 -110px transparent !important;
+    bottom: 95px;
+    display: none;
+    position: absolute;
+    right: 32px;
+    z-index: 100;
 }
 #descDown{
-    background: url("../images/navBtns.jpg") no-repeat scroll 0 0px transparent;
+    background: url("../images/navBtns.png") no-repeat scroll 0 0 transparent;
+    bottom: 69px;
+    display: none !important;
+    position: absolute;
+    right: 32px;
+    z-index: 100;
 }
-#descPrev{
-    background: url("../images/navBtns.jpg") no-repeat scroll 0 -30px transparent !important;
+#descPrev,#fotoPrev{
+    background: url("../images/arrows.png") no-repeat scroll 0 -70px transparent !important;
+    height: 70px !important;
+    left: 32px;
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+    width: 35px !important;
 }
-#descNext{
-    background: url("../images/navBtns.jpg") no-repeat scroll 0 -59px transparent !important;
+#descNext,#fotoNext{
+    cursor: pointer;
+    background: url("../images/arrows.png") no-repeat scroll 0 0 transparent !important;
+    height: 71px !important;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    width: 38px !important;
 }
 .navBox{
     background: none repeat scroll 0 0 #FFFFFF;
@@ -700,12 +758,12 @@ input[type="submit"]{
     top:10px!important;
 }
 .zoomMas, #_zi_icon {
-    background: url("../images/navBtns.jpg") no-repeat scroll 0 -84px transparent !important;
+    background: url("../images/navBtns.png") no-repeat scroll 0 -84px transparent !important;
     left: auto !important;
     right: 29px !important;
 }
 .zoomMenos, #_zo_icon {
-    background: url("../images/navBtns.jpg") no-repeat scroll 0 0 transparent !important;
+    background: url("../images/navBtns.png") no-repeat scroll 0 0 transparent !important;
 }
 .mapZoom, #_zi_icon, #_zo_icon {
     cursor: pointer;
@@ -715,19 +773,19 @@ input[type="submit"]{
     z-index: 100 !important;
 }
 #download{
-    background: url("../images/navBtns.jpg") no-repeat scroll 0 -135px transparent !important;
+    background: url("../images/navBtns.png") no-repeat scroll 0 -133px transparent !important;
     height: 22px;
     position: absolute;
-    right: 115px;
-    top: 40px;
-    width: 92px;
+    right: 96px;
+    top: 20px;
+    width: 93px;
     z-index: 100;
 }
 #map div{
     background-color: transparent !important;
 }
 #sectionImage{
-    width: 30%;
+    width: 400px;
     height: 100%;
     float:left;
     background-size: cover !important;
@@ -736,17 +794,51 @@ input[type="submit"]{
     background: none repeat scroll 0 0 #EBEBEB;
     float: left;
     height: 100%;
-    margin-left: 2%;
-    text-align: left;
-    width: 66%;
+    margin-left: 420px;
     overflow: auto;
+    position: absolute;
+    text-align: left;
+    width: auto;
+     width: 100%;
 }
-#sectionText > p{
+#sectionText > p,#sectionText > div{
     padding: 5px 15px;
 }
 .langArrow{
    background: url("../images/langArrow.jpg") no-repeat scroll 0 0 transparent;
    width: 18px;
-   height: 18px;
+   height: 16px;
    float: right;
+}
+.fbIco{
+    background: url("../images/fb.jpg") no-repeat scroll 0 0 transparent;
+    height: 17px;
+    width: 20px;
+}
+.twitterIco{
+    background: url("../images/twitter.jpg") no-repeat scroll 0 0 transparent;
+    height: 17px;
+    width: 20px;
+}
+.langMenu{
+    position: absolute;
+    background: #fff;
+    color: #000;
+    bottom: 45px;
+    height: 3;
+    opacity: 0;
+    min-height: auto !important;
+}
+.langMenu li{
+    display: block;
+    margin: 5px 5px;
+}
+.mobileHeader{
+    display: none;
+}
+.teamMbl{
+    display: none !important;
+}
+#xpandInfo{
+    display: none;
 }

@@ -1,10 +1,10 @@
 
 var std = ({
     fontFamily: 'Din',
-    color: '#7f7e82',
+    color: '#555555',
     fontWeight: '500',
     letterSpacing: '0.3em',
-    fontSize: '13px',
+    fontSize: '14px',
 });
 var h2 = ({
     fontFamily: 'Din',
@@ -50,6 +50,12 @@ var menu = ({
         fontSize: '13px'
     }
 });
+var yellow = ({
+    fontFamily: 'Din',
+    color: '#999999',
+    letterSpacing: '0.3em',
+    fontSize: '10px'
+});
 
 $(window).load(function() {
     $('.barLeft').on('mouseenter', function() {
@@ -64,24 +70,71 @@ $(window).load(function() {
             $(this).removeClass('navBoxShow', 500);
         });
     });
+    $('#langChage').on('mouseenter', function() {
+        $('.langMenu').queue(function() {
+            $(this).clearQueue();
+            $(this).addClass('navBoxShow', 500);
+        });
+    });
+    $('.langMenu').on('mouseleave', function() {
+        $('.langMenu').queue(function() {
+            $(this).clearQueue();
+            $(this).removeClass('navBoxShow', 500);
+        });
+    });
     loadCufon();
 });
 function loadCufon() {
-    Cufon.replace('p,span,label', std);
-    Cufon.replace('h2', h2);
-    Cufon.replace('h3', h3);
-    Cufon.replace('.menuLink', menuLink);
-    Cufon.replace('.menu', menu);
-    Cufon.replace('.link', link);
+    if (!isMobile.iOS() && !isMobile.Android()) {
+        Cufon.replace('p,span,label', std);
+        Cufon.replace('h2', h2);
+        Cufon.replace('h3', h3);
+        Cufon.replace('.menuLink', menuLink);
+        Cufon.replace('.menu', menu);
+        Cufon.replace('.link', link);
+        Cufon.replace('.yellow', yellow);
+    }
 }
-function changeFoot(texto) {
+$('#lemonCredits').on('mouseleave', function() {
     $('#lemon').queue(function() {
         $(this).clearQueue();
-        $(this).animate({'color': '#000000'}, {
-            complete: function() {
-                $(this).html(texto);
-                $(this).animate({'color': '#ffffff'});   
-                Cufon.replace('#lemon', menu);
-            }});
+        $(this).animate({'opacity': '0'});
     });
-}
+    $('#credits').queue(function() {
+        $(this).clearQueue();
+        $(this).animate({'opacity': '1'});
+    });
+});
+$('#lemonCredits').on('mouseenter', function() {
+    $('#credits').queue(function() {
+        $(this).clearQueue();
+        $(this).animate({'opacity': '0'});
+    });
+    $('#lemon').queue(function() {
+        $(this).clearQueue();
+        $(this).animate({'opacity': '1'});
+    });
+});
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone/i);
+    },
+    iPad: function() {
+        return navigator.userAgent.match(/iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};

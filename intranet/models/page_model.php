@@ -15,19 +15,19 @@ class Page_Model extends Model {
         $form->add('hidden', '_add', 'project');
 
         $form->add('label', 'label_name', 'name', 'Name');
-        $form->add('text', 'name', $project['name'], array('autocomplete' => 'off','required'  =>  array('error', 'Name is required!')));
+        $form->add('text', 'name', $project['name_'.LANG], array('autocomplete' => 'off','required'  =>  array('error', 'Name is required!')));
         
         $form->add('label', 'label_template', 'template', 'Template');
         $obj = $form->add('select', 'template', $project['template'], array('autocomplete' => 'off'));
         foreach($this->getTemplate() as $key => $value) {
-            $menu[$value['id']]=$value['name'];
+            $templ[$value['id']]=$value['name'];
         }
-        $obj->add_options($menu);
+        $obj->add_options($templ);
         
         $form->add('label', 'label_menu', 'menu', 'Menu');
         $obj = $form->add('select', 'menu', $project['menu'], array('autocomplete' => 'off'));
         foreach($this->getMenu() as $key => $value) {
-            $menu[$value['id']]=$value['name'];
+            $menu[$value['id']]=$value['name_'.LANG];
         }
         $obj->add_options($menu);
         if($this->gettemplate($project['template'],'name')=='video'){
@@ -82,9 +82,9 @@ class Page_Model extends Model {
             $b[]=   
             array(
                 "id"  =>$value['id'],
-                "name"  =>$value['name'],
+                "name"  =>$value['name_'.LANG],
                 "template"  =>$this->gettemplate($value['template'],'name'),
-                "Menu"  =>$this->getMenu($value['menu'],'name'),
+                "Menu"  =>$this->getMenu($value['menu'],'name_'.LANG),
                 "URL"  =>'<a target="_blank" href="'.$url.'">'.$url.'</a>',
                 "Options"  =>'<a href="'.URL.LANG.'/page/view/'.$value['id'].'"><div class="edit"></div></a><a href="'.URL.LANG.'/page/delete/'.$value['id'].'"><div class="delete"></div></a>'
             );
@@ -100,11 +100,15 @@ class Page_Model extends Model {
          return $this->db->select('SELECT * FROM images WHERE page = :id ORDER by orden', 
             array('id' => $id));
     } 
+    public function getFiles($id){
+         return $this->db->select('SELECT * FROM files WHERE page = :id ORDER by orden', 
+            array('id' => $id));
+    }
     
     public function create() {
         $menu=($_POST['menu']!='')?$_POST['menu']:-1;
         $data = array(
-            'name' => $_POST['name'],
+            'name_'.LANG => $_POST['name'],
             'template' => $_POST['template'],
             'menu' => $menu,
             'description' => $_POST['description'],
@@ -113,7 +117,7 @@ class Page_Model extends Model {
         $page=$this->db->insert('page', $data);
         if($_POST['menu']!='')$_POST['menu']=-1;
         $data = array(
-            'name' => $_POST['name'],
+            'name_'.LANG => $_POST['name'],
             'url' => strtolower($this->getTemplate($_POST['template'],'url').urlencode($_POST['name'])),
             'parent' => $menu,
             'page' => $page
@@ -123,7 +127,7 @@ class Page_Model extends Model {
     public function edit($id){
         $menu=($_POST['menu']!='')?$_POST['menu']:-1;
         $data = array(
-            'name' => $_POST['name'],
+            'name_'.LANG => $_POST['name'],
             'template' => $_POST['template'],
             'description' => $_POST['description'],
             'content_'.LANG => stripslashes($_POST['content']),
@@ -135,7 +139,7 @@ class Page_Model extends Model {
             "`id` = '{$id}'");
             
         $data = array(
-            'name' => $_POST['name'],
+            'name_'.LANG => $_POST['name'],
             'url' => strtolower($this->getTemplate($_POST['template'],'url').urlencode($_POST['name'])),
             'parent' => $menu
         );

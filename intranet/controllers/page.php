@@ -5,6 +5,7 @@ class Page extends Controller {
     function __construct() {
         parent::__construct();
         $this->view->js = array('page/js/custom.js');
+        if(!Session::get('loggedIn')) header('location: '.URL);
     }
     function index() { 
         $this->view->form = $this->model->form();
@@ -16,6 +17,7 @@ class Page extends Controller {
         $this->view->id=$id;
         $this->view->form=$this->model->form('edit',$id);
         $this->view->Gallery=$this->model->getGallery($id);
+        $this->view->Files=$this->model->getFiles($id);
         $this->view->render('page/view');  
     }
     public function create() 

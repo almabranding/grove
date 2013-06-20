@@ -9,7 +9,7 @@
     <meta name="keywords" content="" />
     <meta name="author" content="" />
 
-    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="<?php echo URL; ?>../favicon.png" Content-type="image/x-icon" />
     <link rel="stylesheet" href="<?php echo URL; ?>public/css/style.css" />
     <link rel="stylesheet" href="<?php echo URL; ?>public/css/zebra_form.css" />
     <link rel="stylesheet" href="<?php echo URL; ?>public/css/jquery.Jcrop.custom.css" />
@@ -53,12 +53,17 @@
     </div>
     <div class="header_admin">
         <div class="header_admin_title">Administration panel</div>
-        <div class="header_login"><!--<img src="<?php //echo BASE;?>intranet/images/account_ico.png">My account--> <a onClick="location.href='<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?logout=1';?>'"><img src="/public/images/logout_ico.png">Logout</a></div>
+        <div class="header_login"><!--<img src="<?php //echo BASE;?>intranet/images/account_ico.png">My account--> <a onClick="location.href='<?php echo URL.'login/out';?>'"><img src="/public/images/logout_ico.png">Logout</a></div>
     </div>    
     <nav class="header_menu" id="sidebarnav">
-        <ul>
+        <ul id="menuNav">
             <li><a href="<?php echo URL.LANG; ?>/page">pages</a></li>
             <li><a href="<?php echo URL.LANG; ?>/menu">menus</a></li>
+        </ul>
+        <ul id="langNav">
+            <li><a href="<?php echo URL.'EN/page'; ?>">EN</a></li>
+            <li><a href="<?php echo URL.'ES/page'; ?>">ES</a></li>
+            <li><a href="<?php echo URL.'PT/page'; ?>">PT</a></li>
         </ul>
     </nav>
     <div class="header_shadow"></div>

@@ -21,16 +21,14 @@ class Controller {
         $this->loadLang($name);
         
     }
-    public function loadLang($name, $langPath = 'lang/en/') {
-        Session::init();
-        $lang=Session::get('lang');
-        $langPath='lang/'.$lang.'/';
+    public function loadLang($name, $langPath = 'lang/EN/') {
+        $langPath='lang/'.LANG.'/';
         require $langPath .'default.php';
         $path = $langPath . $name.'.php';
         if (file_exists($path)) {
             require $path;
         }
-        $this->model->setLang($lang);
+        $this->model->setLang(LANG);
         $this->view->lang = $lang;
     }
 

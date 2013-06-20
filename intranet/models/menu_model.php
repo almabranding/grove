@@ -19,7 +19,7 @@ class Menu_Model extends Model {
                     "width" => "5%",
                 ),
                 array(
-                    "title" => $parent['name'],
+                    "title" => $parent['name_'.LANG],
                     "width" => "80%",
                     "colspan" => "4"
                 )
@@ -32,7 +32,7 @@ class Menu_Model extends Model {
                 $b[$parent['id']][] =
                 array(
                     "id" => $value['id'],
-                    "name" => $elem['name']
+                    "name" => $elem['name_'.LANG]
                 );
             }
         }

@@ -4,6 +4,7 @@ class Image extends Controller {
 
     function __construct() {
         parent::__construct();
+        if(!Session::get('loggedIn')) header('location: '.URL);
     }
     function index() {
         $this->view->render('index/index');  

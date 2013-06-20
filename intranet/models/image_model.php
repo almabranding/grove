@@ -23,6 +23,9 @@ class Image_Model extends Model {
         $form->add('label', 'label_description', 'description', 'Description');
         $obj=$form->add('textarea', 'description', $value['description'], array('autocomplete' => 'off'));
         
+        $form->add('label', 'label_thumbPos', 'thumbPos', 'Thumbnail position(px)');
+        $obj=$form->add('text', 'thumbPos', $value['thumbPos'], array('autocomplete' => 'off'));
+        
         /*$form->add('label', 'label_group', 'group', 'Group');
         $obj = $form->add('select', 'group',$value['group'], array('autocomplete' => 'off'));
         $obj->add_options($group);
@@ -95,6 +98,7 @@ class Image_Model extends Model {
             'description'=>$_POST['description'],
             'vimeo'     => $_POST['vimeo'],
             'group'     => $_POST['group'],
+            'thumbPos'  => $_POST['thumbPos'],
             'replace'   => $_POST['replace'],
             'hide'      => $_POST['hide'],
             'info'      => stripslashes($_POST['info'])
@@ -108,8 +112,8 @@ class Image_Model extends Model {
     public function delete($id){
          foreach ($this->getInfo($id) as $value){
             $this->db->delete('images', "`id` = {$id}");
-            unlink(UPLOAD.$value['page'].'/'.$value['img']);
-            unlink(UPLOAD.$value['page'].'/'.$value['thumb']);
+            @unlink(UPLOAD.$value['page'].'/'.$value['img']);
+            @unlink(UPLOAD.$value['page'].'/'.$value['thumb']);
          } 
     }
     public function createThumbs($fname,$pathToImages, $pathToThumbs, $thumbWidth ) 

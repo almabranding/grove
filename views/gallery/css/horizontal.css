@@ -2,8 +2,7 @@
 
 /* Frame */
 .frame {
-	height: 97%;
-        margin-top: 1%;
+	height: 98%;
 	overflow: hidden;
         position: relative;
 }
@@ -25,13 +24,17 @@
 }
 .frame ul li.active {
 }
+.frame ul li:last-child {
+    margin-right: 20px;
+}
 
 /* Scrollbar */
 .scrollbar {
-	margin: 20px 0 0;
+	margin: 6px 0;
 	height: 2px;
 	background: #ccc;
 	line-height: 0;
+        z-index: 1;
 }
 .scrollbar .handle {
 	width: 100px;
@@ -122,4 +125,7 @@
 	-webkit-transform: rotateY(-60deg) scale(0.9);
 	-ms-transform: rotateY(-60deg) scale(0.9);
 	transform: rotateY(-60deg) scale(0.9);
+}
+.bhMove{
+    background-position: 0px 0px !important;
 }

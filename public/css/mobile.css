@@ -1,0 +1,474 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+/* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+/* Styles */
+    .mobileLogo{
+        background: url("../images/mobileLogoBig.png") repeat scroll right center transparent;
+        height: 39px;
+        width: 32px;
+    }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 620px) {
+    body {-webkit-text-size-adjust: none;}
+    h2{
+        font-size: 12px;
+    }
+    .bgBigDesc{
+        padding: 6px 24px;
+        line-height: 10px !important
+    }
+    .bgDesc{
+        line-height: 10px !important;
+    }
+    #descInfo {
+        float: none;
+        margin: 0 auto;
+        width: 94%;
+    }
+    #descNext,#descPrev{
+        top: 36%;
+    }
+    .header{
+        display: none;
+    }
+    .mobileHeader{
+        display: inline !important;
+        height: 40px;
+        width: 100%;
+    }
+    .labelLogin{
+        display: none;
+    }
+    .menuTitleBox{
+        background: url("../images/mobileBg.jpg") repeat scroll 0 0 transparent;
+        border-left: 1px solid #FFFFFF;
+        border-right: 1px solid #B4B5B6;
+        height: 15px;
+        padding: 12px 0;
+        vertical-align: middle;
+        width: auto;
+        text-align: center;
+    }
+    .menuGroup{
+        background: none repeat scroll 0 0 #F0EFF4;
+        border-top: 1px solid #CCCCCC;
+        color: #777777;
+        font-size: 11px;
+        height: 15px !important;
+        padding: 18px 0 !important;
+        width: 100%;
+    }
+    .header_menu>ul {
+        height: 0;
+        margin: auto;
+        overflow: hidden;
+        position: absolute;
+        top: 39px;
+        width: 100%;
+    }
+    .backgroundHome{
+        height: 100% !important;
+    }
+    #menuSingle .header_menu > ul {
+        left: -300% !important;
+        width: 400% !important;
+        top: 50px !important;
+    }
+    .header_menu > li{
+        margin: 0 !important;
+        width: 100%;
+    }
+    .imageControl{
+        display: none !important;
+    }
+    .backgroundContainer img{
+    }
+    #vision{
+        width: 26% !important;
+    }
+    #environment{
+        width: 43% !important;
+    }
+    #building{
+        width: 31% !important;
+    }
+    .despOpen{
+        height: auto !important;
+        overflow-y: auto !important;
+    }
+    .header_menu ul {
+        left: 0%;
+        height: 0;
+        margin: auto;
+        overflow: hidden;
+        padding: 0;
+        z-index: 1000;
+    }
+    .formsMobile {
+        background: #edecf2;
+        height: 0;
+        margin: auto;
+        overflow: hidden;
+        padding: 0;
+        z-index: 1000;
+        border-bottom: 1px solid #CCCCCC;
+    }
+    .formsMobile>div{
+        width: 200px;
+        margin: 20px auto;
+    }
+    .header_menu ul li{
+        opacity: 1 !important;
+        overflow: hidden;
+        padding-left:20px !important;
+        position: relative;
+        margin: 0 !important;
+    }
+    .menuTitlespanArrrow{
+        background: url("../images/mobileArrow.png") no-repeat scroll right center transparent;
+        padding-right: 9px;
+    }
+    .barText li{
+        margin: 0 4px !important;
+    }
+    .logoBox{
+        display: none;
+    }
+    .plusM{
+        height: 9px;
+        position: absolute;
+        right: 34px;
+        top: 18px;
+        width: 10px;
+    }
+    .lessM{
+        height: 4px;
+        position: absolute;
+        right: 10px;
+        top: 23px;
+        width: 7px;
+    }
+    #descMenu{
+        position: relative !important;
+        top: -35px !important;
+        width: 95%!important;
+        margin: auto;
+    }
+    .menuMobile {
+        background: url("../images/mobileBg.jpg") repeat scroll right center transparent;
+        height: 11px !important;
+        padding: 12px 0 !important;
+        width: 100%;
+    }
+    .logo{
+        background: url("../images/mobileBg.jpg") repeat scroll right center transparent;
+        float: left;
+        height: 39px;
+        text-align: center;
+        vertical-align: middle;
+        width: 50%;
+    }
+    .logo div{
+        border-right: 1px solid #B4B5B6;
+        height: 100%;
+        overflow: hidden;
+        padding-top: 0;
+        width: auto;
+    }
+    .logo img{
+        margin: 7px auto;
+        vertical-align: middle;
+        width: 32px;
+    }
+    .logoBig{
+        background: url("../images/mobileBg.jpg") repeat scroll right center transparent;
+        float: left;
+        height: 49px;
+        text-align: center;
+        vertical-align: middle;
+        width: 75%;
+        border-bottom: 1px solid #B4B5B6;
+    }
+    .logoBig div{
+        border-right: 1px solid #B4B5B6;
+        height: 100%;
+        overflow: hidden;
+        padding: 0px 0 0 14px;
+    }
+    .logoBig img{
+        width: auto;
+        margin:11px 5px;
+        vertical-align: middle;
+    }
+    .loginBtn{
+        text-transform: uppercase;
+    }
+    #container{ 
+        height: auto;
+        margin-bottom: 50px;
+    }
+    #menu{
+        float: left;
+        height: 39px;
+        margin: auto;
+        position: relative !important;
+        width: 50%;
+        z-index: 20;
+        text-transform: uppercase;
+    }
+    footer{
+        position: relative !important;
+    }
+    #menuSingle{
+        float: left;
+        height: 51px;
+        margin: auto;
+        width: 25%;
+    }
+    #menuSingle li{
+        width: 100% !important;
+        border-left: 1px solid #ffffff;
+        border-bottom: 1px solid #B4B5B6;
+    }
+    .header_menu > li{
+        top: 0 !important;
+    }
+    #imgFull > img,#bgFrame,#fitNav,#bgPrev,#bgNext{
+        display: none;
+    }
+    .accessFrame{
+    }
+    #download{
+        display:none;
+    }
+    #imgFull{
+        height: auto !important;
+    }
+    #imgFull iframe{
+        height: 300px;
+    }
+    .labelInfo{
+        display: none;
+    }
+    .frameContent{
+        width: 97%;
+    }
+    .gallerysBox{
+        margin: 20px 0 !important;
+    }
+    #gallerys,.gallerysBoxImg img,.gallerysBox{
+        margin: auto;
+        height: auto;
+        width: 96% !important;
+    }
+    .gallerysBoxImg img{
+        margin: auto !important;
+        width: 100% !important;
+    }
+    .mobileSubMenu{
+        background: url("../images/mobileSub.jpg") repeat scroll right center transparent;
+        height: 17px !important;
+        padding: 18px 20px !important;
+        width: auto;
+        text-transform: uppercase;
+        display: inherit !important;
+        text-align: left;
+    }
+    .galleryFrame{
+        width: 100%;
+        display: none;
+    }
+    .HidedScreen{
+        display: inherit !important;
+    }
+    #imgBG{
+        display: none !important;
+    }
+    .HidedBox{ 
+        display:inherit !important;
+        height: auto !important;
+        width: auto !important;
+    }
+    .HidedScreen .gallerysBoxInfo{
+        display: none;
+    }
+    .mapLinks{
+        
+    }
+    .teamCol {
+        background: none repeat scroll 0 0 #FFFFFF;
+        float: left;
+        margin: 10px 0 !important;
+        min-height: 200px !important;
+        overflow: hidden;
+        padding: 10px 10px 30px !important;
+        position: relative;
+        text-align: left;
+        width: 95% !important;
+    }
+    .teamContent {
+        margin: auto !important;
+        position: relative;
+    }
+    .contentPage {
+        min-width: 80% !important;
+    }
+    .formContact{
+        width: 100% !important;
+    }
+    .imageContact{
+        display: none !important;
+    }
+    html{
+    }
+    .barLogo{
+        left:6px !important;
+    }
+    .barText{
+        right: 0 !important;
+        float: left !important;
+        width: 80%;
+        margin-left: 10px;
+        font-size: 7px !important;
+    }
+    .teamPic {
+        padding-left: 0 !important;
+    }
+    .barLeft{
+        display: none;
+    }
+    .mobileLogo{
+        background: url("../images/mobileLogo.png") no-repeat scroll 16px center transparent;
+        height: 39px;
+        width: 32px;
+    }
+    .backgroundContainer{
+        background-position: 0 0 !important;
+    }
+    #descInfoFull,#page{
+        width: 95%;
+    }
+    #terraLogo{
+        display: none;
+    }
+    #map-container{
+        height: 60%;
+    }
+    #selectMenu {
+         position: fixed !important;
+         z-index: 19;
+    }
+    .backgroundHome{
+        margin: 0 !important;
+    }
+    .backgroundContainer{
+        background-position: 0px 0px !important;
+    }
+    .frame ul li{
+        width: 200px !important;
+    }
+    .frame {
+        height: 95%!important;
+    }
+    .scrollbar{
+       margin: 1%!important;
+    }
+    .mapSubBar {
+        height: auto !important;
+        padding: 2px 12px 0 !important;
+    }
+    #sectionImage {
+        float: none!important;
+        height: 124px!important;
+        width: 100%!important;
+    }
+    #sectionText {
+        height: auto!important;
+        margin-left: 0!important;
+        margin-top: 20px!important;
+        overflow: auto;
+        position: relative!important;
+    }
+    .barRight{
+        float:none;
+    }
+    .teamMbl{
+        display: block !important;
+    }
+    #teamGrey{
+        display:none;
+    }
+    .teamInfo{
+        margin-top: 10px !important;
+    }
+    .teamInfo div{
+        float: none !important;
+        margin: auto !important;
+        width: 90% !important;
+    }
+    #xpandInfo{
+        background: none repeat scroll 0 0 #CCCCCC;
+        border: 1px solid #333333;
+        border-radius: 4px 4px 4px 4px;
+        display: block !important;
+        height: 15px;
+        margin: 5px 20px;
+        padding: 6px;
+        text-align: left;
+        width: 50px;
+    }
+    #descInfoRight{
+        padding: 0 0 30px 0 !important;
+        display: none;
+        margin: auto !important;
+        width: 90% !important;
+    }
+    #controlsMaps div{
+        top: 5px !important;
+    }
+    .zoomMas, #_zi_icon{
+        right: 0 !important;
+    }
+    .zoomMas, #_zi_icon{
+        right: -30px !important;
+    }
+}   
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+/* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+/* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1224px) {
+/* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5),only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+}

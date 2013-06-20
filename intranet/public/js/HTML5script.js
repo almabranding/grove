@@ -1,6 +1,6 @@
 $(function(){
-	var URL='/grove/intranet/';
-        var LANG='/NULL/';
+	var URL='/intranet/';
+        var LANG='';
 	var dropbox = $('#dropbox'),
         message = $('.message', dropbox);
         var project = $('#project').val();
@@ -28,7 +28,7 @@ $(function(){
 					alert('Too many files! Please select '+maxfiles+' at most! (configurable)');
 					break;
 				case 'FileTooLarge':
-					alert(file.name+' is too large! Please upload files up to 2mb (configurable).');
+					alert(file.name+' is too large! Please upload files up to '+maxfilesize+'mb (configurable).');
 					break;
 				default:
 					break;
@@ -37,13 +37,13 @@ $(function(){
 		
 		// Called before each upload is started
 		beforeEach: function(file){
-			if(!file.type.match(/^image\//)){
+			/*if(!file.type.match(/^image\//)){
 				alert('Only images are allowed!');
 				
 				// Returning false will cause the
 				// file to be rejected
 				return false;
-			}
+			}*/
 		},
 		
 		uploadStarted:function(i, file, len){

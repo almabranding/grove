@@ -1,8 +1,11 @@
-$(window).load(function(){  
+$(window).load(function(){
+    var initial_ZOOM=0;
+    if(typeof mapa !== 'undefined') initial_ZOOM=200;
+    $('#container').css('height','inherit');
     $('.map').each(function(){
-        $(this).smoothZoom({
-            initial_ZOOM : 200,
-            zoom_MAX:300,
+        var map=$(this).smoothZoom({
+            initial_ZOOM : initial_ZOOM,
+            zoom_MAX:800,
             button_SIZE:22,
             button_OPACITY:1,
             pan_BUTTONS_SHOW: 'NO',
@@ -11,4 +14,7 @@ $(window).load(function(){
         });
     });
 });
+window.addEventListener("orientationchange", function() {
+	location.reload();
+}, false);
 

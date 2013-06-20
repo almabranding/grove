@@ -10,11 +10,15 @@ class Login extends Controller {
     {    
         $this->view->render('login/index');
     }
-    
     function run()
     {
        
         $this->model->run();
+    }
+    function out()
+    {
+       
+        $this->model->out();
     }
     
 

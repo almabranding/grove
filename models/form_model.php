@@ -5,27 +5,24 @@ class Form_Model extends Model {
     }  
     public function register() {
         $data=array(
-            'name'      => $_POST['name'],
-            'last'      => $_POST['last'],
-            'email'     => $_POST['email'],
-            'how'       => $_POST['how'],
-            'subject'   => $_POST['subject'],
-            'message'   => $_POST['message']
+            'Name'      => $_POST['name'],
+            'Phone'     => $_POST['phone'],
+            'Email'     => $_POST['email']
         );
-        $this->ValidarDatos($data['mail']);
-	$mail="dan@almabranding.com";
-	//$mail = "dmartin@glass120ocean.com,anna@glass120ocean.com,eloy@glass120ocean.com,nherrera@terragroup.com,contact@glass120ocean.com,info@glass120ocean.com";
-        $to = $mail;
+        $this->ValidarDatos($data['email']);
+	$mail="dmartin@terragroup.com,nherrera@terragroup.com,info@groveatgrandbay.com,pfreedman@groveatgrandbay.com,lbarroso@terragroup.com";
+	$to = $mail;
 	$subject = "User Register";
 	$headers  = "MIME-Version: 1.0\r\n";
 	$headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
-	$headers .= "From: contact@glass120ocean.com" . "\r\n";
+	$headers .= "From: info@groveatgrandbay.com" . "\r\n";
 	$body = "";
         foreach($data as $key=>$value)
             $body.= $key.': '.$value.'<br/>';		
-	mail($to, $subject, $body, $headers);
-        
-        $this->db->insert('request', $data);
+	mail($to, $subject, $body, $headers); 
+
+        $body ="Dear ".$_POST['name'].",<br/>Thank you for your interest in Grove at Grand Bay.  We'll be in touch shortly.";
+        mail($_POST['email'], $subject, $body, $headers); 
     }
     
 }
