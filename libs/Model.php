@@ -34,7 +34,7 @@ class Model {
     }
 
     function getGallery($id) {
-        return $this->db->select('SELECT * FROM images WHERE page = :page ORDER BY orden', array('page' => $id));
+        return $this->db->select('SELECT * FROM images WHERE page = :page AND (lang=:lang OR lang="all") ORDER BY orden', array('page' => $id,'lang' => LANG));
     }
 
     function getTemplate($id) {

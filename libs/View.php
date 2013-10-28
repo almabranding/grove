@@ -13,7 +13,8 @@ class View {
 
         if ($noInclude == true) {
             require 'views/head.php';
-            require 'views/' . $name . '.php';    
+            require 'views/' . $name . '.php';   
+            require 'views/footer.php';   
         }
         else {
             require 'views/head.php';

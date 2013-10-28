@@ -2,6 +2,7 @@
 $lang=Array();
 $lang['actLang']='Portugues';
 $lang['contact']='Contato';
+$lang['press']='Prensa';
 $lang['disclaimer']='Renúncia';
 $lang['siteCredits']='CRÉDITOS DO SITE';
 $lang['menu']='Menu';

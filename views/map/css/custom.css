@@ -1,3 +1,8 @@
 .logoBox {
     background-image: url("/public/images/logoBlack.png") !important;
+    width: 100% !important;
+    display: none !important;
+}
+.logoBox img{
+    display: none;
 }

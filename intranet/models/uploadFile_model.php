@@ -94,6 +94,7 @@ class uploadFile_Model extends Model {
             'caption_ES'   => $file['name'],
             'caption_PT'   => $file['name'],
             'page'         => $page,
+            'lang'         => LANG
         ));
     }
     public function png2jpg($originalFile, $outputFile, $quality) {
@@ -118,14 +119,14 @@ class uploadFile_Model extends Model {
           $data['thumb']=$fname;
           $data['w']=$new_width;
           $data['h']=$new_height;
-          $new_width = 600;
+          $new_width = 1136;
           $new_height = floor( $height * ( $new_width / $width ) );
           // create a new temporary image
           $tmp_img = imagecreatetruecolor( $new_width, $new_height ); 
           // copy and resize old image into new image 
           imagecopyresampled( $tmp_img, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height );
           // save thumbnail into a fileimagepng
-          imagejpeg( $tmp_img, "{$pathToThumbs}{$fname}",100 );
+          imagejpeg( $tmp_img, "{$pathToThumbs}{$fname}",70 );
           return $data;
 
     }

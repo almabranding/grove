@@ -22,19 +22,14 @@ $(document).ready(function() {
             $(this).find('.plusM').html('+');
         }
     }); 
-    $('.backgroundContainer').each(function(){
-        if(isMobile.iOS() || isMobile.Android())
-            var src=$(this).find('#phoneImg').html();
-        else
-            var src=$(this).find('#bigImg').html();
-        $(this).css('background-image','url("'+src+'")');
-    });
-    $('#xpandInfo').on('click', function() {
-        $('#descInfoRight').queue(function() {
-            $(this).clearQueue();
-            $(this).toggle('slow');
-            jQuery('html,body,#container').animate({scrollTop: $("#descInfoRight").offset().top}, 1000);
+    $('#planMobile h3').on('click', function() {
+        var p=$(this).parent();
+        p.find('p').toggle('slow');
         });
-    });
+         $('#videoMobile h3').on('click', function() {
+        var p=$(this).parent();
+        p.find('p').toggle('slow');
+        });
+ 
     
 });

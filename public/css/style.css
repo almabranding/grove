@@ -13,6 +13,26 @@
 @media only screen and (max-width : 699px) {
     
 }
+@font-face {
+    font-family: 'DINFont';
+    src: url('DIN.eot');
+    src: url('DIN.eot?#iefix') format('embedded-opentype'),
+         url('DIN.woff') format('woff'),
+         url('DIN.ttf') format('truetype'),
+         url('DIN.svg#DINFont') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DINFont';
+    src: url('DIN Bold.eot');
+    src: url('DIN Bold.eot?#iefix') format('embedded-opentype'),
+         url('DIN Bold.woff') format('woff'),
+         url('DIN Bold.ttf') format('truetype'),
+         url('DIN Bold.svg#DINFont') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
 /*Elementos*/
 *{
     margin: 0;
@@ -30,7 +50,14 @@
     width: auto;
     overflow: auto;
 }
-
+#panoramic {
+    height: 94%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto;
+    position: relative;
+    width: auto;
+}
 html, body {
     height: 100%;
 }
@@ -46,13 +73,13 @@ img{
 }
 body {
     background:  #fff;
-    color:#333333;
-    font-size:11px;
+    color:#777777;
+    font-size:13px;
     text-align:center;
     margin:0;
     padding:0;
     height: 100%;    
-    font-family:'Helvetica Neue', arial,sans-serif;
+    font-family:'DINFont', arial,sans-serif;
 }
 .bold{
     font-weight: bold;
@@ -86,6 +113,7 @@ ol,ul{
 .clr{
     clear: both;
     float: none !important;
+    height: 0;
 }
 #wrapper {    
     position: relative;
@@ -103,7 +131,7 @@ footer{
 }
 footer nav{
     color: #FFFFFF;
-    font-size: 10px;
+    font-size: 11px;
     padding: 0;
     position: relative;;
 }
@@ -116,8 +144,8 @@ footer nav li{
 }
 .mapSubBar{
     background: none repeat scroll 0 0 #000000;
-    height: 31px;
-    padding: 15px 12px 0;
+    height: 32px;
+    padding: 11px 12px 0;
 }
 
 .barRight{
@@ -142,8 +170,13 @@ footer nav li{
     z-index: 1001;
     display: none;
 }
+h2{
+    font-weight: normal;
+    font-size: 13px;
+}
 h3{
     margin: 0 0 10px 0;
+    font-size: 13px;
 }
 p{
     margin: 5px 0;
@@ -200,14 +233,14 @@ input[type="text"], input[type="password"] {
     width: 200px;
 }
 label {
-    display: inline;
+    display: inline-block;
     line-height: 20px;
     margin: 0 7px 0 0;
     padding: 6px 10px 0 0;
     position: relative;
     text-align: left;
     vertical-align: bottom;
-    width: 100px;
+    min-width: 50px;
 }
 .btn {
     background-color: #7D7D7D;
@@ -322,14 +355,18 @@ label {
     height: 100%;
 }
 .logoBox{
-    background-image: url('../images/logo.png');
-    width: 217px;
     height: 71px;
+    left: 50px;
     margin: auto;
+    max-width: 217px;
+    min-width: 108px;
     position: absolute;
-    left:50px;
-    top:50px;
+    top: 50px;
+    width: 14%;
     z-index: 11;
+}
+.logoBox img{
+    width: 100%;
 }
 .accessFrame{
     background: #f7f9f9;
@@ -478,14 +515,14 @@ input[type="submit"]{
     width: 100%;
 }
 .header_menu > li {
-    color: #000000;
+    color: #777777;
     cursor: pointer;
     display: inline;
     float: left;
     margin: 8px 0 21px 20px;
     position: relative;
     text-align: left;
-    width: 100px;
+    width: auto;
 }
 .header_menu .selected{
     display: block;
@@ -500,22 +537,28 @@ input[type="submit"]{
     padding-top: 5px;
     position: relative;
     top: 0;
-    width: 98%;
+    width: 100%;
 }
 .header_menu:hover li ul {
     opacity: 1;
 }
 .header_menu ul li {
-    /*height: 0;
-    opacity: 0;*/
-    margin: 5px 0;
-    overflow: hidden;    
+    height: 21px;
+    margin: 0;
     padding: 0;
+    vertical-align: middle;
+}
+.header_menu ul li:hover a{
+    font-weight: bold;
+    vertical-align: middle;
+    font-size: 13px;
 }
 .header_menu ul li a {
-    border: medium none;
-    margin: 0;
-    width: 100%;
+    vertical-align: middle;
+} 
+.header_menu ul li a:hover {
+    vertical-align: middle;
+    font-weight: bold;
 } 
 .menuTitle{
     cursor: pointer;
@@ -536,8 +579,7 @@ input[type="submit"]{
     -ms-transform:translateZ(0px) translateX(0px) !important;
 }
 .container-margin{
-    /*background: none repeat scroll 0 0 #EBEBEB;*/
-    margin: 1% 20px;
+    margin: 1% 20px 0;
     position: relative;
     width: auto;
 }
@@ -558,7 +600,7 @@ input[type="submit"]{
 .bgDesc{
     background: none repeat scroll 0 0 #FFFFFF;
     bottom: 0;
-    font-size: 20px;
+    font-size: 8px;
     height: 0;
     opacity: 0;
     padding: 10px 24px;
@@ -566,12 +608,14 @@ input[type="submit"]{
     text-align: left;
     width: 100%;
     z-index: 12;
+    font-weight: normal !important;
     line-height: 5px;
 }
 .bgBigDesc {
+    font-weight: normal !important;
     background: none repeat scroll 0 0 #FFFFFF;
     bottom: 0;
-    font-size: 20px;
+    font-size: 8px;
     height: 0;
     left: 0;
     line-height: 5px;
@@ -629,14 +673,35 @@ input[type="submit"]{
     width: 65%;
     max-width: 1150px;
 }
-#descInfoRight{
+#descInfoVideo{
     margin: 0 20px;
     padding: 20px 0;
     position: relative;
     text-align: left;
     width: 60%;
+    z-index: 4;
 }
-#descInfoRight div{
+#map-container{
+    height: 70%;
+    vertical-align: top;
+}
+#descInfoMap {
+    background: none repeat scroll 0 0 #FFFFFF;
+    bottom: 7%;
+    margin: 0 20px;
+    padding: 20px 0;
+    position: absolute;
+    text-align: left;
+    width: 97%;
+    z-index: 4;
+}
+#areaBox{
+    display: none;
+}
+#descInfoMap > div{
+    width: 60%;
+}
+#planScreen div{
     margin-right: 6% !important;
     width: auto !important;
 }
@@ -649,6 +714,9 @@ input[type="submit"]{
     column-gap: 20px;
 }
 .backgroundContainer span{
+    display: none;
+}
+.backgroundContainer img{
     display: none;
 }
 #replace{
@@ -777,7 +845,34 @@ input[type="submit"]{
     height: 22px;
     position: absolute;
     right: 96px;
-    top: 20px;
+    top: 19px;
+    width: 93px;
+    z-index: 100;
+}
+#download_EN{
+    background: url("../images/navBtns.png") no-repeat scroll 0 -133px transparent !important;
+    height: 22px;
+    position: absolute;
+    right: 96px;
+    top: 19px;
+    width: 93px;
+    z-index: 100;
+}
+#download_ES{
+    background: url("../images/navBtns_ES.png") no-repeat scroll 0 -133px transparent !important;
+    height: 22px;
+    position: absolute;
+    right: 96px;
+    top: 19px;
+    width: 93px;
+    z-index: 100;
+}
+#download_PT{
+    background: url("../images/navBtns_PT.png") no-repeat scroll 0 -133px transparent !important;
+    height: 22px;
+    position: absolute;
+    right: 96px;
+    top: 19px;
     width: 93px;
     z-index: 100;
 }
@@ -798,16 +893,15 @@ input[type="submit"]{
     overflow: auto;
     position: absolute;
     text-align: left;
-    width: auto;
-     width: 100%;
+    width: inherit;
 }
-#sectionText > p,#sectionText > div{
+#sectionText > p,#sectionText > div,#sectionText > h2{
     padding: 5px 15px;
 }
 .langArrow{
    background: url("../images/langArrow.jpg") no-repeat scroll 0 0 transparent;
    width: 18px;
-   height: 16px;
+   height: 14px;
    float: right;
 }
 .fbIco{
@@ -821,13 +915,12 @@ input[type="submit"]{
     width: 20px;
 }
 .langMenu{
-    position: absolute;
-    background: #fff;
-    color: #000;
-    bottom: 45px;
-    height: 3;
+    background: none repeat scroll 0 0 #FFFFFF;
+    bottom: 31px;
+    color: #000000;
+    min-height: 0 !important;
     opacity: 0;
-    min-height: auto !important;
+    position: absolute;
 }
 .langMenu li{
     display: block;
@@ -842,3 +935,27 @@ input[type="submit"]{
 #xpandInfo{
     display: none;
 }
+#mobileGallery{
+    display: none;
+}
+#screenGallery{
+    height: 100%;
+    overflow: hidden;
+}
+#planMobile{
+     display: none;   
+}
+#planScreen{
+    
+}
+.downloadMobil{
+    display: none;
+}
+.footerScreen{
+    }
+    .footerMobil{
+        display: none;
+    }
+    #lemonCredits{
+        font-size: 10px;
+    }

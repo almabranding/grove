@@ -14,24 +14,32 @@
         </ul>
     </nav>
     <nav class="barRight">
-        <ul class="langMenu" style="display:none">
-            <li class="menuLink"><a href="<?php echo URL.'EN'.RUTE;?>">ENGLISH</a></li>
-            <li class="menuLink"><a href="<?php echo URL.'ES'.RUTE;?>">SPANISH</a></li>
-            <li class="menuLink"><a href="<?php echo URL.'PT'.RUTE;?>">PORTUGUESE</a></li>
-        </ul>
+        
         <ul>
-            <li id="langChage" style="display:none">
-                <span class="menu"><?php echo $this->lang['actLang'];?></span><div class="langArrow"></div>
-            </li>
-            <li style="margin-bottom:3px;">
+            <li class="footerScreen">
 <!--               <a href='http://www.lemonyellow.com/' target="_blank"><span id="lemon" class="yellow"><?php //echo $this->lang['siteCredits'];?>: LY</span></a>-->
                 <div id="lemonCredits" style="position:relative; width: 90px;height: 13px;">
-                    <div style="position:absolute;opacity: 0;text-align: right;width: 100%;" id="lemon"><a class="yellow"  href='http://www.lemonyellow.com/' target="_blank" >LEMON YELLOW</a></div>
-                    <div id="credits" style="position:absolute;text-align: right;width: 100%;"><a class="yellow"  href='http://www.lemonyellow.com/' target="_blank" ><?php echo $this->lang['siteCredits'];?></a></div>
+                    <div style="position:absolute;opacity: 0;text-align: right;width: 100%;" id="lemon">LEMON YELLOW</div>
+                    <div id="credits" style="position:absolute;text-align: right;width: 100%;"><?php echo $this->lang['siteCredits'];?></div>
                 </div>
+            </li>
+            <li id="langChage">
+                <ul class="langMenu">
+                    <li class="menuLink"><a href="<?php echo URL.'EN'.RUTE;?>">ENGLISH</a></li>
+                    <li class="menuLink"><a href="<?php echo URL.'ES'.RUTE;?>">SPANISH</a></li>
+                    <li class="menuLink"><a href="<?php echo URL.'PT'.RUTE;?>">PORTUGUESE</a></li>
+                </ul>
+                <span class="menu"><?php echo $this->lang['actLang'];?></span><div class="langArrow"></div>
+                
+            </li>
+            <li class="footerMobil">
+                <a href='http://www.terragroup.com/about' target='_blank'><span class="menu">&copy;TERRA GROUP 2013</span></a>
             </li>
             <li>
                 <a href='<?php echo URL.LANG.'/page/section/contact';?>'><span class="menu"><?php echo $this->lang['contact'];?></span></a>
+            </li>
+            <li>
+                <a href='<?php echo URL.LANG.'/page/section/press';?>'><span class="menu"><?php echo $this->lang['press'];?></span></a>
             </li>
             <li  style="display:none">
                 <div class="fbIco"></div>
@@ -42,7 +50,14 @@
             <li>
                 <a href='<?php echo URL.LANG.'/page/section/disclaimer';?>'><span class="menu"><?php echo $this->lang['disclaimer'];?></span></a>
             </li>
-            <li>
+            <li class="footerMobil">
+<!--               <a href='http://www.lemonyellow.com/' target="_blank"><span id="lemon" class="yellow"><?php //echo $this->lang['siteCredits'];?>: LY</span></a>-->
+                <div id="lemonCredits" style="position:relative; width: 90px;height: 13px;">
+                    <div style="position:absolute;opacity: 0;text-align: right;width: 100%;" id="lemon">LEMON YELLOW</div>
+                    <div id="credits" style="position:absolute;text-align: right;width: 100%;"><?php echo $this->lang['siteCredits'];?></div>
+                </div>
+            </li>
+            <li  class="footerScreen">
                 <a href='http://www.terragroup.com/about' target='_blank'><span class="menu">&copy;TERRA GROUP 2013</span></a>
             </li>
             <li>

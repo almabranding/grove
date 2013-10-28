@@ -1,7 +1,7 @@
 <div class="preload preloadW"></div>
 <section id="mobileGallery">
     <div class="infoMbl">
-        <h3 id="mblTitle"><?php echo $this->page['name_' . LANG]. ' ' . $this->lang['moreInfo']; ?>  </h3>
+        <h3 id="mblTitle"><?php echo $this->page['name_' . LANG]; ?>  </h3>
         <div id="moreDescMbl" class="  " style="">
             <?php echo $this->page['content_' . LANG]; ?>  
         </div>
@@ -19,10 +19,7 @@
     </div>
 </section>
 <section id="screenGallery">
-<div class="scrollbar">
-    <div class="handle">
-        <div class="mousearea"></div>
-    </div>
+<div style="height:10px;">
 </div>
 <div id="centered" class="frame" style="overflow: hidden;">
     <ul  class="bgList" style="height: 100%;width: 10000px">
@@ -34,10 +31,10 @@
                     <span id="phoneImg"><?php echo IMAGES . $this->page['id'] . '/' . $value['thumb']; ?></span>
                 </div>
                 <div class="bgDesc">
-                    <h2 class="caption"><?php echo $value['caption_' . LANG] . ' ' . $this->lang['moreInfo']; ?> </h2>
+                    <h2 class="caption"><?php echo $value['caption_' . LANG] ; ?> </h2>
                 </div>
                 <div class="bgBigDesc">
-                    <h2 class=""><?php echo $value['caption_' . LANG] . ' ' . $this->lang['moreInfo']; ?></h2>
+                    <h2 class=""><?php echo $value['caption_' . LANG] ; ?></h2>
                 </div>
             </li>
         <?php } ?>

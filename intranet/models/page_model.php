@@ -101,7 +101,7 @@ class Page_Model extends Model {
             array('id' => $id));
     } 
     public function getFiles($id){
-         return $this->db->select('SELECT * FROM files WHERE page = :id ORDER by orden', 
+         return $this->db->select('SELECT * FROM files WHERE page = :id AND (lang="'.LANG.'" OR lang=null) ORDER by orden', 
             array('id' => $id));
     }
     

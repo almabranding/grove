@@ -11,7 +11,7 @@ class File_Model extends Model {
     public function delete($id){
          foreach ($this->getInfo($id) as $value){
             $this->db->delete('files', "`id` = {$id}");
-            @unlink(UPLOAD.$value['page'].'/'.$value['img']);
+            @unlink(UPLOAD.$value['page'].'/'.$value['name']);
          } 
     }
 }

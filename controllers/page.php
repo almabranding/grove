@@ -38,13 +38,16 @@ class Page extends Controller {
     }
     public function map($url,$pic=true) {
         $this->view->js = array(
-            'map/js/modernizr.custom.17475.js',
             'map/js/jquery.smoothzoom.js',
             'map/js/custom.js'); 
-        if($url!='area')$this->view->css = array('map/css/custom.css');
+        $this->view->css = array('map/css/custom.css');
         $this->view->zoom=true;
         $this->view->url=$url;
         $this->view->page=$this->model->getPage($url);
+        if($this->view->page['name_EN']=='Area'){
+            $this->view->css = array('map/css/custom.css','map/css/map.css');
+            $this->view->js[]='map/js/map.js';
+        }
         $this->view->files=$this->model->getFiles($this->view->page['id']); 
         $this->view->gallery=$this->model->getGallery($this->view->page['id']);
         $this->view->render('map/index');
@@ -56,6 +59,19 @@ class Page extends Controller {
         $this->view->page=$this->model->getPage($url);
         $this->view->gallery=$this->model->getGallery($this->view->page['id']);
         $this->view->render('gallery/index');
+    }
+    public function images($url,$pic=true) {
+        $this->view->js = array('images/js/sly.js','images/js/custom.js','images/js/jquery.backgroundpos.min.js');
+        $this->view->css = array('images/css/horizontal.css');
+        $this->view->url=$url;
+        $this->view->page=$this->model->getPage($url);
+        $this->view->gallery=$this->model->getGallery($this->view->page['id']);
+        $this->view->render('images/index');
+    }
+    public function panoramic($url='') {
+        $this->view->js = array('panoramic/js/custom.js');
+        $this->view->panoramic=$url;
+        $this->view->render('panoramic/index',true);
     }
     
 }

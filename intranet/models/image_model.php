@@ -26,6 +26,15 @@ class Image_Model extends Model {
         $form->add('label', 'label_thumbPos', 'thumbPos', 'Thumbnail position(px)');
         $obj=$form->add('text', 'thumbPos', $value['thumbPos'], array('autocomplete' => 'off'));
         
+        $form->add('label', 'label_lang', 'lang', 'Language');
+        $obj = $form->add('select', 'lang',$value['lang'], array('autocomplete' => 'off'));
+        $obt['all']='All';
+        $obt['EN']='EN';
+        $obt['ES']='ES';
+        $obt['PT']='PT';
+        $obj->add_options($obt);
+        unset($obt);
+        
         /*$form->add('label', 'label_group', 'group', 'Group');
         $obj = $form->add('select', 'group',$value['group'], array('autocomplete' => 'off'));
         $obj->add_options($group);
@@ -101,6 +110,7 @@ class Image_Model extends Model {
             'thumbPos'  => $_POST['thumbPos'],
             'replace'   => $_POST['replace'],
             'hide'      => $_POST['hide'],
+            'lang'      => $_POST['lang'],
             'info'      => stripslashes($_POST['info'])
         );
         echo $this->db->update('images', $data, 

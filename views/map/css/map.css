@@ -1,0 +1,27 @@
+#container{
+   overflow: hidden; 
+}
+#descInfoMap{
+    display: none;
+}
+#map-container {
+    height: 100%;
+    text-align: left;
+    
+}
+#map{
+    text-align: left;
+}
+#descInfoMap{
+    bottom: 0 !important;
+    height: 20px !important;
+}
+#descInfoMap *{
+    
+}
+#areaBox{
+    padding: 0 !important;
+}
+#areaBox img{
+    width: 100%;
+}

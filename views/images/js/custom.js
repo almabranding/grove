@@ -16,7 +16,6 @@ var $options = {
     touchDragging: 1,
     releaseSwing: 1,
     startAt: 0,
-    scrollBar: $wrap.find('.scrollbar'),
     speed: time / 2,
     elasticBounds: 0,
     easing: 'swing',
@@ -47,11 +46,11 @@ $(window).load(function() {
     });
     $('.descMenu').append($('#replace').html());
     $('#replace').html(''); 
-    loadCufon();
     sly = new Sly($frame, $options).init();
     resizeContainer();
+    selectImage($('.bgContainer').eq(carouselPos));
     
-    $('#descDown').on('click', function() {
+     $('#descDown').on('click', function() {
         isShow=0;
         $('.descUpDown').toggle();
         $('.descMenu').removeClass('navBoxShow', 500);
@@ -78,6 +77,7 @@ $(window).load(function() {
     $('#descClose').on('click', function() {
         returnGallery();
     });
+    
     $('.bgControl').on('click', function() {
         var max = $('.bgContainer').index();
         $('.preload').show();
@@ -181,22 +181,14 @@ function selectImage(li) {
         width: $(window).width()-anc,
         backgroundPosition: '0px 0px'
     };
-    li.find(".backgroundContainer").animate(
-        css,
-    {
-        duration: time,
-        complete: function() {
-            $(this).addClass('opened');
+    li.find(".backgroundContainer").css(css);
+    li.addClass('opened');
             $('#container').addClass('mobileFull');
             $('#descNav').addClass('navBoxShow', 500);
             $('.scrollbar').css('opacity',0);
-            if(isShow) $('.descMenu').addClass('navBoxShow', 500);
             $('.preload').hide();
             $('#fadeWhite').fadeOut();
-            $(this).parent().find(".bgBigDesc").css(css).addClass('bgDescShow', 500);
-            
-        }
-    });
+            li.parent().find(".bgBigDesc").css(css).addClass('bgDescShow', 500);
 }
 function returnGallery(){   
         $('.scrollbar').css('opacity',1);

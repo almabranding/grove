@@ -18,7 +18,7 @@
    <!-- <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/sunny/jquery-ui.css" />-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-
+    <script>var LANG="<?=LANG;?>"</script>
     <script src="<?php echo URL; ?>public/js/jquery.min.js"></script>
     <script src="<?php echo URL; ?>public/js/jquery.Jcrop.js"></script>
     <script src="<?php echo URL; ?>public/js/ajaxfileupload.js"></script>
@@ -45,7 +45,7 @@
 <?php Session::init(); ?>
     <header>
     <div class="header_logo">
-        <a href="index.php">
+        <a href="<?php echo URL.LANG; ?>/page">
         <div id="logo">
             <img src="/public/images/logo.png">
         </div>

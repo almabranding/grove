@@ -9,7 +9,7 @@
     <ul id="sortable" class="ui-sortable sortable" rel="cosa">
     <?php foreach ($this->Gallery as $key=>$value){?>
     <li id="foo_<?php echo $value['id'];?>" class="ui-state-default" onclick="">
-    <img caption="<?php echo $value['caption_'.LANG];?>" src="<?php echo URL.UPLOAD.$this->id.'/'.$value['thumb'];?>">
+    <a target="_blank" href="<?php echo URL.UPLOAD.$this->id.'/'.$value['img'];?>"><img caption="<?php echo $value['caption_'.LANG];?>" src="<?php echo URL.UPLOAD.$this->id.'/'.$value['thumb'];?>"></a>
     <?php
     // project_model::editImage(1);
     ?>

@@ -86,13 +86,13 @@ $(window).load(function() {
 });
 function loadCufon() {
     if (!isMobile.iOS() && !isMobile.Android()) {
-        Cufon.replace('p,span,label', std);
-        Cufon.replace('h2', h2);
-        Cufon.replace('h3', h3);
-        Cufon.replace('.menuLink', menuLink);
-        Cufon.replace('.menu', menu);
-        Cufon.replace('.link', link);
-        Cufon.replace('.yellow', yellow);
+//        Cufon.replace('p,span,label', std);
+//        Cufon.replace('h2', h2);
+//        Cufon.replace('h3', h3);
+//        Cufon.replace('.menuLink', menuLink);
+//        Cufon.replace('.menu', menu);
+//        Cufon.replace('.link', link);
+//        Cufon.replace('.yellow', yellow);
     }
 }
 $('#lemonCredits').on('mouseleave', function() {

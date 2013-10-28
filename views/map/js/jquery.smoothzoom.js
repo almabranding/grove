@@ -384,6 +384,7 @@
 				_x = tX = (sW - _w) / 2;
 				_y = tY = (sH - _h) / 2;
 			} else {
+                            console.log(init_pos[0]);
 				_x = tX = (sW / 2) - parseInt(init_pos[0]) * _sc;
 				_y = tY = (sH / 2) - parseInt(init_pos[1]) * _sc;
 				oX = (tX - ((sW - _w) / 2)) / (_w / sW);

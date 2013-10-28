@@ -13,5 +13,7 @@
             <div class="clr"></div>
         </div>
         <div id="container">
-            <div class="logoBox"></div>
+            <div class="logoBox">
+                <img src="<?php echo URL;?>public/images/logo.png">
+            </div>
 
